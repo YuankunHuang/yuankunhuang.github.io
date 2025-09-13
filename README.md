@@ -1,25 +1,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h1 align="center">Developer's Portfolio ✨</h1>
+  <h1 align="center">Yuankun Huang - Portfolio ✨</h1>
 
   <p align="center">
-    It is a personal static website/portfolio template hosted with GitHub Pages, built to showcase my recent projects. 
+    Personal portfolio website showcasing my game development projects and professional experience as a Senior Unity Developer at IGG Canada.
     <br/>
-    <strong>Site URL / Demo » </strong> 
-    <a href="https://hashirshoaeb.github.io/home">hashirshoaeb.github.io/home</a>
+    <strong>Live Site » </strong> 
+    <a href="https://yuankunhuang.github.io">yuankunhuang.github.io</a>
     <br />
     <br />
-    <a href="https://hashirshoaeb.github.io">About Me</a>
+    <a href="https://www.linkedin.com/in/yuankun-huang/">LinkedIn Profile</a>
   </p>
 </p>
 
-![GitHub contributors](https://img.shields.io/github/contributors/hashirshoaeb/home?color=ffcc66&style=for-the-badge)
-![GitHub stars](https://img.shields.io/github/stars/hashirshoaeb/home?color=ffcc66&style=for-the-badge)
-[![GitHub forks](https://img.shields.io/github/forks/hashirshoaeb/home?style=for-the-badge)](https://github.com/hashirshoaeb/star_book/network)
-[![GitHub issues](https://img.shields.io/github/issues/hashirshoaeb/home?color=ffcc66&style=for-the-badge)](https://github.com/hashirshoaeb/star_book/issues)
-[![GitHub license](https://img.shields.io/github/license/hashirshoaeb/home?style=for-the-badge)](https://github.com/hashirshoaeb/home/blob/master/LICENSE)
-[![Twitter Follow](https://img.shields.io/twitter/follow/hashirshoaeb?color=ffcc66&logo=twitter&logoColor=ffffff&style=for-the-badge)](https://twitter.com/hashirshoaeb)
+![GitHub stars](https://img.shields.io/github/stars/yuankunhuang/yuankunhuang.github.io?color=ffcc66&style=for-the-badge)
+[![GitHub forks](https://img.shields.io/github/forks/yuankunhuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/yuankunhuang/yuankunhuang.github.io/network)
+[![GitHub license](https://img.shields.io/github/license/yuankunhuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/yuankunhuang/yuankunhuang.github.io/blob/master/LICENSE)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yuankun-huang/)
 [![Node Version](https://img.shields.io/static/v1?label=Node&message=^22.12.0&color=026e00&style=for-the-badge)](https://nodejs.org)
 [![npm Version](https://img.shields.io/static/v1?label=npm&message=^10.9.0&color=cb0000&style=for-the-badge)](https://nodejs.org)
 
@@ -69,7 +67,7 @@
 
 # About the project
 
-[![Site preview](/public/social-image.png)](https://hashirshoaeb.github.io/home)
+[![Site preview](/public/social-image.png)](https://yuankunhuang.github.io)
 
 
 ## Technology stack 🛠️
@@ -106,9 +104,9 @@ Dependencies defined in package.json:
   - Copyrights - open source
   - Acknowledgements
 
-# Getting started 💗
+# About This Portfolio 💗
 
-Project is open source. Feel free to make your own version. All you need to do is to fork this repository, edit [src/editable-stuff/config.js](./src/editable-stuff/config.js) and add resume. Mark star ⭐ if you like the project.
+This is my personal portfolio website showcasing my experience as a Senior Unity Developer. The site is built with React and highlights my game development projects, technical skills, and professional background.
 
 ## Prerequisites 🍪
 
@@ -167,84 +165,36 @@ You should have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/
     
    Next time if you make changes, repeat from step 8.
 
-Facing issues? Feel free to contact at hashirshoaeb@gmail.com.
+Questions about my work or collaboration opportunities? Feel free to contact me at buptforeverbean@gmail.com or connect via [LinkedIn](https://www.linkedin.com/in/yuankun-huang/).
 
-# Support my work
+# Connect with me
 
-If you found this project valuable, please consider giving it a ⭐️ on GitHub. Your support keeps me motivated! If you'd like to further support my work, you can buy me a book. Thank you for your generosity!
+If you're interested in my work or have collaboration opportunities in game development, I'd love to hear from you! You can also star ⭐ this repository if you find it useful.
 
-<div>
-  <a href="https://www.buymeacoffee.com/hashirshoaeb"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book&emoji=📖&slug=hashirshoaeb&button_colour=5F7FFF&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00" /></a>
- </div>
+**Contact:**
+- Email: buptforeverbean@gmail.com
+- LinkedIn: [Yuankun Huang](https://www.linkedin.com/in/yuankun-huang/)
+- GitHub: [yuankunhuang](https://github.com/yuankunhuang)
 
-# Showcase 🚀
+# Professional Experience 🚀
 
-Have you changed something in the code to create your own version? Feel free to share with me, I will list them in this space.
+**Senior Unity Developer** at IGG Canada (2021 - Present)
+- Mobile game development with Unity and C#
+- Cross-platform game programming
+- Technical leadership and project collaboration
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/justiceserv/justiceserv.github.io">
-        <img src="READMEdocs/justiceserv-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Guhyun Chung</b></sub>
-      </a>
-      <br />
-    </td>
-    <td align="center">
-      <a href="https://github.com/hamzasohail0/home/">
-        <img src="READMEdocs/hamzasohail0-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Hamza Sohail</b></sub>
-      </a>
-      <br />
-    </td>
-    <td align="center">
-      <a href="https://github.com/AymunTariq/home/">
-        <img src="READMEdocs/aymuntariq-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Aymun Tariq</b></sub>
-      </a>
-      <br />
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/anaashrafi/home/">
-        <img src="READMEdocs/anaashrafi-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Ana Ashrafi</b></sub>
-      </a>
-      <br />
-    </td>
-    <td align="center">
-      <a href="https://github.com/jefferyjohn/home/">
-        <img src="READMEdocs/jefferyjohn-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Jeffery John</b></sub>
-      </a>
-      <br />
-    </td>
-    <td align="center">
-      <a href="https://github.com/remimestdagh/home/">
-        <img src="READMEdocs/remimestdagh-github-io-home.gif" width="300px" alt="" />
-        <br />
-        <sub><b>Remi Mestdagh</b></sub>
-      </a>
-      <br />
-    </td>
-  </tr>
-</table>
+**Education:** Master's Degree from Centre for Digital Media (2019 - 2021)
 
-# Versão em Português :brazil:
+## Key Skills
+- **Game Development:** Unity Engine, C#, C++
+- **Mobile Development:** Cross-platform mobile games
+- **Technical Leadership:** Project management and team collaboration
+- **Continuous Learning:** Multiple professional certifications in game development
 
-Esse projeto foi traduzido para português! Se você gostou dele e quer criar a sua própria versão, confira o repositório do [@tashima42](https://github.com/tashima42) em [https://github.com/Tashima42/home](https://github.com/Tashima42/home).
-Novas contribuições e revisões na tradução são muito bem vindas!
+# License
 
-# Notice:
+This project is open source and available under the [MIT License](LICENSE).
 
-This project has been **archived**. Means that it is no longer actively maintained by developer. Free free to fork, use and maintain your own version. You can check my new portfolio template [here](https://github.com/hashirshoaeb/portfolio)
+---
 
-# Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/hashirshoaeb/home.svg)](https://starchart.cc/hashirshoaeb/home)
+*Built with React • Deployed on GitHub Pages • Last updated: 2024*

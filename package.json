@@ -1,6 +1,6 @@
 {
-  "name": "developers-portfolio",
-  "description": "A personal static website/portfolio template hosted with GitHub Pages, built to showcase my recent projects.",
+  "name": "yuankun-huang-portfolio",
+  "description": "Personal portfolio website of Yuankun Huang, Senior Unity Developer at IGG Canada. Showcasing game development projects and professional experience.",
   "homepage": "https://yuankunhuang.github.io",
   "version": "2.0.0",
   "dependencies": {
