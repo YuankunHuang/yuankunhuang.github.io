@@ -13,7 +13,7 @@ const mainBody = {
   icons: [
     {
       image: "fa-github",
-      url: "https://github.com/yuankunhuang",
+      url: "https://github.com/YuankunHuang",
     },
     {
       image: "fa-linkedin",
@@ -39,11 +39,11 @@ const mainBody = {
 const about = {
   show: true,
   heading: "About Me",
-  imageLink: "../editable-stuff/yuankunhuang.jpg",
+  imageLink: require("../editable-stuff/yuankunhuang.jpg"),
   imageSize: 375,
   message:
     "I'm Yuankun Huang, a Senior Unity Developer at IGG Canada with 5+ years of professional experience in game development. I specialize in mobile game development and have a Master's degree from Centre for Digital Media. My expertise spans Unity, C#, C++, and cross-platform game programming. I'm passionate about creating engaging gaming experiences and continuously expanding my technical skills through professional certifications and hands-on development.",
-  resume: "../editable-stuff/resume.pdf",
+  resume: require("../editable-stuff/resume.pdf"),
 };
 
 // PROJECTS SECTION
@@ -54,7 +54,7 @@ const about = {
 const repos = {
   show: true,
   heading: "Recent Projects",
-  gitHubUsername: "yuankunhuang",
+  gitHubUsername: "YuankunHuang",
   reposLength: 6,
   specificRepos: [],
 };
@@ -112,12 +112,12 @@ const experiences = {
   data: [
     {
       role: 'Senior Unity Developer - IGG Canada',
-      companylogo: '../editable-stuff/igg.png',
+      companylogo: require('../editable-stuff/igg.png'),
       date: '2021 - Present',
     },
     {
       role: 'Master\'s Degree - Centre for Digital Media',
-      companylogo: '../editable-stuff/cdm.png',
+      companylogo: require('../editable-stuff/cdm.png'),
       date: '2019 - 2021',
     },
   ]

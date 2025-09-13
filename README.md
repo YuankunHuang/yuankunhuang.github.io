@@ -7,16 +7,16 @@
     Personal portfolio website showcasing my game development projects and professional experience as a Senior Unity Developer at IGG Canada.
     <br/>
     <strong>Live Site » </strong> 
-    <a href="https://yuankunhuang.github.io">yuankunhuang.github.io</a>
+    <a href="https://YuankunHuang.github.io">YuankunHuang.github.io</a>
     <br />
     <br />
     <a href="https://www.linkedin.com/in/yuankun-huang/">LinkedIn Profile</a>
   </p>
 </p>
 
-![GitHub stars](https://img.shields.io/github/stars/yuankunhuang/yuankunhuang.github.io?color=ffcc66&style=for-the-badge)
-[![GitHub forks](https://img.shields.io/github/forks/yuankunhuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/yuankunhuang/yuankunhuang.github.io/network)
-[![GitHub license](https://img.shields.io/github/license/yuankunhuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/yuankunhuang/yuankunhuang.github.io/blob/master/LICENSE)
+![GitHub stars](https://img.shields.io/github/stars/YuankunHuang/yuankunhuang.github.io?color=ffcc66&style=for-the-badge)
+[![GitHub forks](https://img.shields.io/github/forks/YuankunHuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/YuankunHuang/yuankunhuang.github.io/network)
+[![GitHub license](https://img.shields.io/github/license/YuankunHuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/YuankunHuang/yuankunhuang.github.io/blob/master/LICENSE)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yuankun-huang/)
 [![Node Version](https://img.shields.io/static/v1?label=Node&message=^22.12.0&color=026e00&style=for-the-badge)](https://nodejs.org)
 [![npm Version](https://img.shields.io/static/v1?label=npm&message=^10.9.0&color=cb0000&style=for-the-badge)](https://nodejs.org)
@@ -67,7 +67,7 @@
 
 # About the project
 
-[![Site preview](/public/social-image.png)](https://yuankunhuang.github.io)
+[![Site preview](/public/social-image.png)](https://YuankunHuang.github.io)
 
 
 ## Technology stack 🛠️
@@ -174,7 +174,7 @@ If you're interested in my work or have collaboration opportunities in game deve
 **Contact:**
 - Email: buptforeverbean@gmail.com
 - LinkedIn: [Yuankun Huang](https://www.linkedin.com/in/yuankun-huang/)
-- GitHub: [yuankunhuang](https://github.com/yuankunhuang)
+- GitHub: [YuankunHuang](https://github.com/YuankunHuang)
 
 # Professional Experience 🚀
 
