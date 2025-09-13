@@ -6,30 +6,18 @@ const navBar = {
 // Main Body SECTION
 const mainBody = {
   gradientColors: "#4484ce, #1ad7c0, #ff9b11, #9b59b6, #ff7f7f, #ecf0f1",
-  firstName: "Hashir",
+  firstName: "Yuankun",
   middleName: "",
-  lastName: "Shoaib",
-  message: " Passionate about changing the world with technology. ",
+  lastName: "Huang",
+  message: " Senior Unity Developer passionate about creating immersive gaming experiences. ",
   icons: [
     {
       image: "fa-github",
-      url: "https://github.com/hashirshoaeb",
-    },
-    {
-      image: "fa-facebook",
-      url: "https://www.facebook.com/hashirshoaeb",
-    },
-    {
-      image: "fa-instagram",
-      url: "https://www.instagram.com/hashirshoaeb/",
+      url: "https://github.com/yuankunhuang",
     },
     {
       image: "fa-linkedin",
-      url: "https://www.linkedin.com/in/hashirshoaeb/",
-    },
-    {
-      image: "fa-twitter",
-      url: "https://www.twitter.com/hashirshoaeb/",
+      url: "https://www.linkedin.com/in/yuankun-huang/",
     },
   ],
 };
@@ -51,11 +39,11 @@ const mainBody = {
 const about = {
   show: true,
   heading: "About Me",
-  imageLink: require("../editable-stuff/hashirshoaeb.png"),
+  imageLink: "../editable-stuff/yuankunhuang.jpg",
   imageSize: 375,
   message:
-    "My name is Hashir Shoaib. I’m a graduate of 2020 from National University of Sciences and Technology at Islamabad with a degree in Computer Engineering. I'm most passionate about giving back to the community, and my goal is to pursue this passion within the field of software engineering. In my free time I like working on open source projects.",
-  resume: "https://docs.google.com/document/d/13_PWdhThMr6roxb-UFiJj4YAFOj8e_bv3Vx9UHQdyBQ/edit?usp=sharing",
+    "I'm Yuankun Huang, a Senior Unity Developer at IGG Canada with 5+ years of professional experience in game development. I specialize in mobile game development and have a Master's degree from Centre for Digital Media. My expertise spans Unity, C#, C++, and cross-platform game programming. I'm passionate about creating engaging gaming experiences and continuously expanding my technical skills through professional certifications and hands-on development.",
+  resume: "../editable-stuff/resume.pdf",
 };
 
 // PROJECTS SECTION
@@ -66,8 +54,8 @@ const about = {
 const repos = {
   show: true,
   heading: "Recent Projects",
-  gitHubUsername: "hashirshoaeb", //i.e."johnDoe12Gh"
-  reposLength: 4,
+  gitHubUsername: "yuankunhuang",
+  reposLength: 6,
   specificRepos: [],
 };
 
@@ -75,20 +63,8 @@ const repos = {
 const leadership = {
   show: false,
   heading: "Leadership",
-  message:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut lectus arcu bibendum at varius. Libero justo laoreet sit amet cursus sit amet. Imperdiet dui accumsan sit amet nulla facilisi morbi. At auctor urna nunc id. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Et magnis dis parturient montes nascetur ridiculus mus mauris. In nisl nisi scelerisque eu ultrices vitae auctor. Mattis nunc sed blandit libero volutpat sed cras ornare. Pulvinar neque laoreet suspendisse interdum consectetur libero.",
-  images: [
-    { 
-      img: require("../editable-stuff/hashirshoaeb.png"), 
-      label: "First slide label", 
-      paragraph: "Nulla vitae elit libero, a pharetra augue mollis interdum." 
-    },
-    { 
-      img: require("../editable-stuff/hashirshoaeb.png"), 
-      label: "Second slide label", 
-      paragraph: "Nulla vitae elit libero, a pharetra augue mollis interdum." 
-    },
-  ],
+  message: "",
+  images: [],
   imageSize: {
     width:"615",
     height:"450"
@@ -100,24 +76,24 @@ const skills = {
   show: true,
   heading: "Skills",
   hardSkills: [
-    { name: "Python", value: 90 },
-    { name: "SQL", value: 75 },
-    { name: "Data Structures", value: 85 },
-    { name: "C/C++", value: 65 },
-    { name: "JavaScript", value: 90 },
-    { name: "React", value: 65 },
-    { name: "HTML/CSS", value: 55 },
-    { name: "C#", value: 80 },
+    { name: "Unity Engine", value: 95 },
+    { name: "C#", value: 90 },
+    { name: "C++", value: 85 },
+    { name: "Mobile Game Development", value: 90 },
+    { name: "Unreal Engine", value: 75 },
+    { name: "Cross-platform Development", value: 85 },
+    { name: "Game Programming", value: 90 },
+    { name: "Software Architecture", value: 80 },
   ],
   softSkills: [
-    { name: "Goal-Oriented", value: 80 },
-    { name: "Collaboration", value: 90 },
-    { name: "Positivity", value: 75 },
-    { name: "Adaptability", value: 85 },
-    { name: "Problem Solving", value: 75 },
-    { name: "Empathy", value: 90 },
-    { name: "Organization", value: 70 },
-    { name: "Creativity", value: 90 },
+    { name: "Problem Solving", value: 90 },
+    { name: "Team Collaboration", value: 85 },
+    { name: "Project Management", value: 80 },
+    { name: "Technical Leadership", value: 85 },
+    { name: "Continuous Learning", value: 95 },
+    { name: "Communication", value: 80 },
+    { name: "Adaptability", value: 90 },
+    { name: "Creative Thinking", value: 85 },
   ],
 };
 
@@ -126,23 +102,23 @@ const getInTouch = {
   show: true,
   heading: "Get In Touch",
   message:
-    "I'm currently looking for full-time Software Engineering or Machine Learning opportunities! If you know of any positions available, if you have any questions, or if you just want to say hi, please feel free to email me at",
-  email: "hashirshoaeb@gmail.com",
+    "I'm open to exciting opportunities in game development, Unity programming, and mobile game projects. Whether you're looking for a senior developer or want to discuss innovative gaming solutions, feel free to reach out at",
+  email: "buptforeverbean@gmail.com",
 };
 
 const experiences = {
-  show: false,
-  heading: "Experiences",
+  show: true,
+  heading: "Professional Experience",
   data: [
     {
-      role: 'Software Engineer',// Here Add Company Name
-      companylogo: require('../assets/img/dell.png'),
-      date: 'June 2018 – Present',
+      role: 'Senior Unity Developer - IGG Canada',
+      companylogo: '../editable-stuff/igg.png',
+      date: '2021 - Present',
     },
     {
-      role: 'Front-End Developer',
-      companylogo: require('../assets/img/boeing.png'),
-      date: 'May 2017 – May 2018',
+      role: 'Master\'s Degree - Centre for Digital Media',
+      companylogo: '../editable-stuff/cdm.png',
+      date: '2019 - 2021',
     },
   ]
 }
