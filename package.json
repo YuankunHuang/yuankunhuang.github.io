@@ -1,7 +1,7 @@
 {
   "name": "yuankun-huang-portfolio",
   "description": "Personal portfolio website of Yuankun Huang, Senior Unity Developer at IGG Canada. Showcasing game development projects and professional experience.",
-  "homepage": "https://YuankunHuang.github.io",
+  "homepage": "https://yuankunhuang.github.io/",
   "version": "2.0.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",

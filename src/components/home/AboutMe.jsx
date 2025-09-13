@@ -42,8 +42,12 @@ const AboutMe = ({ heading, message, link, imgSize, resume }) => {
               className="border border-secondary rounded-circle"
               src={profilePicUrl}
               alt="profilepicture"
-              width={imgSize}
-              height={imgSize}
+              style={{
+                width: imgSize,
+                height: imgSize,
+                objectFit: "cover",
+                objectPosition: "center"
+              }}
             />
           )}
         </div>

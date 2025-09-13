@@ -9,7 +9,7 @@ const mainBody = {
   firstName: "Yuankun",
   middleName: "",
   lastName: "Huang",
-  message: " Senior Unity Developer passionate about creating immersive gaming experiences. ",
+  message: " Unity Developer specializing in mobile game architecture and performance optimization. ",
   icons: [
     {
       image: "fa-github",
@@ -42,7 +42,7 @@ const about = {
   imageLink: require("../editable-stuff/yuankunhuang.jpg"),
   imageSize: 375,
   message:
-    "I'm Yuankun Huang, a Senior Unity Developer at IGG Canada with 5+ years of professional experience in game development. I specialize in mobile game development and have a Master's degree from Centre for Digital Media. My expertise spans Unity, C#, C++, and cross-platform game programming. I'm passionate about creating engaging gaming experiences and continuously expanding my technical skills through professional certifications and hands-on development.",
+    "I'm Yuankun, a Unity developer focused on crafting robust mobile gaming experiences. Over the past 5+ years at IGG Canada, I've contributed to Mythic Heroes and other projects, specializing in performance optimization, UI architecture, and developer tooling. I believe great games emerge from the intersection of solid engineering and thoughtful design. Currently expanding my expertise into Unreal Engine and advanced C++ development, always excited to explore cutting-edge game technologies. When not coding, you'll find me composing music or playing badminton. I'm always open to meaningful conversations about game development and creative collaboration.",
   resume: require("../editable-stuff/resume.pdf"),
 };
 
@@ -78,22 +78,22 @@ const skills = {
   hardSkills: [
     { name: "Unity Engine", value: 95 },
     { name: "C#", value: 90 },
-    { name: "C++", value: 85 },
     { name: "Mobile Game Development", value: 90 },
-    { name: "Unreal Engine", value: 75 },
-    { name: "Cross-platform Development", value: 85 },
-    { name: "Game Programming", value: 90 },
-    { name: "Software Architecture", value: 80 },
+    { name: "Performance Optimization", value: 85 },
+    { name: "UI Architecture", value: 85 },
+    { name: "HybridCLR/ILRuntime", value: 80 },
+    { name: "C++", value: 75 },
+    { name: "Unreal Engine", value: 60 },
   ],
   softSkills: [
+    { name: "Technical Mentoring", value: 85 },
+    { name: "System Design", value: 80 },
+    { name: "Code Architecture", value: 85 },
+    { name: "Knowledge Sharing", value: 80 },
     { name: "Problem Solving", value: 90 },
+    { name: "Continuous Learning", value: 90 },
     { name: "Team Collaboration", value: 85 },
-    { name: "Project Management", value: 80 },
-    { name: "Technical Leadership", value: 85 },
-    { name: "Continuous Learning", value: 95 },
-    { name: "Communication", value: 80 },
-    { name: "Adaptability", value: 90 },
-    { name: "Creative Thinking", value: 85 },
+    { name: "Adaptability", value: 85 },
   ],
 };
 
@@ -102,7 +102,7 @@ const getInTouch = {
   show: true,
   heading: "Get In Touch",
   message:
-    "I'm open to exciting opportunities in game development, Unity programming, and mobile game projects. Whether you're looking for a senior developer or want to discuss innovative gaming solutions, feel free to reach out at",
+    "I enjoy connecting with fellow developers, sharing insights about mobile game development, and exploring collaborative opportunities. Whether you're interested in discussing Unity architecture, performance optimization techniques, or have an interesting project idea, I'd love to hear from you at",
   email: "buptforeverbean@gmail.com",
 };
 
