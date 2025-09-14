@@ -138,6 +138,28 @@ const featuredProjects = [
     demoUrl: "#mythicDemo", // "#demoId" for embedded demo, "https://..." for external
     // githubUrl: "https://github.com/yourusername/repo", // Uncomment if public
     
+    // Demo configuration (演示配置) - All demo content is configurable
+    demoConfig: {
+      icon: "fas fa-gamepad", // Demo icon
+      title: "Mythic Heroes - Live Demo", // Demo title
+      description: "Experience the performance-optimized gameplay in your browser", // Demo description
+      placeholderTitle: "Mythic Heroes WebGL Build", // Placeholder content title
+      tech: "Unity 2021.3 LTS • Optimized for 60fps • HybridCLR Enabled", // Technology info
+      features: ["Character selection", "Battle system showcase", "UI responsiveness test", "Performance monitoring"], // Demo features array
+      startText: "Start Game", // Start button text
+      webDemo: { // WebGL演示配置
+        type: "unity", // 类型：unity WebGL
+        buildPath: "/webgl-demos/mythic-heroes", // WebGL构建文件路径
+        buildName: "mythic-heroes", // 构建文件名（不含扩展名）
+        width: 960, // 宽度
+        height: 600, // 高度
+        loadingText: "Loading Mythic Heroes...", // 加载提示文字
+        companyName: "IGG", // 公司名称
+        productName: "Mythic Heroes", // 产品名称
+        productVersion: "1.0", // 版本号
+      }
+    },
+    
     // Optional project website (可选项目网站)
     projectUrl: "https://mythicheroes.com", // Official website, press coverage, etc.
     projectUrlLabel: "Official Website", // Button text
@@ -159,7 +181,18 @@ const featuredProjects = [
     ],
     githubUrl: "https://github.com/YuankunHuang",
     detailsModal: "toolsModal",
-    status: "active"
+    status: "active",
+    
+    // Demo configuration for Performance Analyzer
+    demoConfig: {
+      icon: "fas fa-tools",
+      title: "Unity Performance Analyzer - Live Demo",
+      description: "Interactive demonstration of real-time performance monitoring tools",
+      placeholderTitle: "Performance Analyzer Dashboard",
+      tech: "Unity Editor Tools • Real-time Monitoring • C# Implementation",
+      features: ["Real-time profiling", "Memory analysis", "Automated reporting", "Performance charts"],
+      startText: "Launch Analyzer"
+    }
   },
   {
     id: 3,
@@ -175,11 +208,72 @@ const featuredProjects = [
     ],
     githubUrl: "https://github.com/YuankunHuang/HIVE-Rehab-Project",
     detailsModal: "hiveModal",
-    status: "research"
+    status: "research",
+    
+    // Demo configuration for HIVE Rehab
+    demoConfig: {
+      icon: "fas fa-hand-paper",
+      title: "HIVE Rehab - Gesture Training Demo",
+      description: "Experience the gesture-driven rehabilitation training system",
+      placeholderTitle: "HIVE Rehab Training Session",
+      tech: "Unity • Leap Motion SDK • Clinical Data Integration",
+      features: ["Gesture recognition", "Training exercises", "Progress tracking", "Clinical reports"],
+      startText: "Start Training"
+    }
   }
 ];
 
 // RESEARCH SECTION
+// Tools Section - Developer Tools & Utilities
+const tools = {
+  show: true,
+  heading: "Tools & Utilities",
+  subtitle: "Development tools and utilities I've built to enhance productivity",
+  projects: [
+    {
+      title: "Unity Performance Analyzer",
+      description: "Custom Unity Editor tools for real-time performance monitoring and optimization. Helps development teams identify bottlenecks efficiently.",
+      tags: ["Unity", "Editor Tools", "C#", "Performance"],
+      status: "active",
+      icon: "fas fa-tachometer-alt",
+      githubUrl: "https://github.com/YuankunHuang",
+      features: ["Real-time Profiling", "Memory Leak Detection", "Automated Reports"],
+      category: "Unity Tools"
+    },
+    {
+      title: "Mobile Build Pipeline",
+      description: "Automated CI/CD pipeline for Unity mobile builds with multi-platform support, automated testing, and deployment.",
+      tags: ["Unity", "CI/CD", "Mobile", "Automation"],
+      status: "active", 
+      icon: "fas fa-cogs",
+      githubUrl: "https://github.com/YuankunHuang",
+      features: ["Multi-platform Builds", "Automated Testing", "Asset Optimization"],
+      category: "DevOps"
+    },
+    {
+      title: "HybridCLR Integration Kit",
+      description: "Streamlined toolkit for integrating HybridCLR hot-update system into Unity projects with automated setup and configuration.",
+      tags: ["Unity", "HybridCLR", "Hot Update", "Tools"],
+      status: "prototype",
+      icon: "fas fa-sync-alt",
+      githubUrl: "https://github.com/YuankunHuang",
+      features: ["One-click Setup", "Configuration Templates", "Build Automation"],
+      category: "Unity Tools"
+    },
+    {
+      title: "Code Quality Dashboard", 
+      description: "Comprehensive code quality monitoring dashboard for Unity projects with metrics visualization and technical debt tracking.",
+      tags: ["Unity", "Code Quality", "Analytics", "Dashboard"],
+      status: "exploring",
+      icon: "fas fa-chart-line",
+      features: ["Code Metrics", "Technical Debt Tracking", "Team Analytics"],
+      category: "Analytics"
+    }
+  ],
+  // Core tags for filtering - configurable
+  coreTagFilters: ["Unity", "Unreal", "C#", "C++", "Mobile", "XR", "Performance", "Tools"]
+};
+
 const research = {
   show: true,
   heading: "Research & Exploration", 
@@ -190,14 +284,14 @@ const research = {
       status: "learning",
       icon: "fas fa-cube",
       description: "Diving deep into UE5's new features including Nanite virtualized geometry, Lumen global illumination, and Blueprint visual scripting. Building small prototypes to understand the engine's architecture.",
-      tags: ["Unreal Engine 5", "Blueprint", "Nanite", "Lumen"]
+      tags: ["Unreal", "Blueprint", "Nanite", "Lumen"]
     },
     {
       title: "Advanced C++ Patterns", 
       status: "exploring",
       icon: "fas fa-code",
       description: "Studying modern C++ design patterns, memory management techniques, and performance optimization strategies. Focus on game engine architecture and real-time systems.",
-      tags: ["C++20", "Memory Management", "Design Patterns", "Performance"]
+      tags: ["C++", "Memory Management", "Design Patterns", "Performance"]
     },
     {
       title: "AI Integration in Games",
@@ -308,6 +402,7 @@ export {
   mainBody, 
   about, 
   featuredProjects,
+  tools,
   research,
   blog,
   repos, // Keep for backward compatibility

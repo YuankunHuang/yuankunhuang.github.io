@@ -5,6 +5,7 @@ import {
   mainBody,
   about,
   featuredProjects,
+  tools,
   research,
   blog,
   repos,  // Keep for backward compatibility
@@ -15,6 +16,7 @@ import {
 import MainBody from "./components/home/MainBody";
 import AboutMe from "./components/home/AboutMe";
 import FeaturedProjects from "./components/home/FeaturedProjects";
+import Tools from "./components/home/Tools";
 import Research from "./components/home/Research";
 import BlogSection from "./components/home/BlogSection";
 import Project from "./components/home/Project";  // Legacy component
@@ -49,7 +51,20 @@ const Home = React.forwardRef((props, ref) => {
       
       {/* Featured Projects Section */}
       {featuredProjects && featuredProjects.length > 0 && (
-        <FeaturedProjects projects={featuredProjects} />
+        <FeaturedProjects 
+          projects={featuredProjects} 
+          coreTagFilters={tools.coreTagFilters}
+        />
+      )}
+      
+      {/* Tools Section */}
+      {tools.show && (
+        <Tools
+          heading={tools.heading}
+          subtitle={tools.subtitle}
+          projects={tools.projects}
+          coreTagFilters={tools.coreTagFilters}
+        />
       )}
       
       {/* Research Section */}

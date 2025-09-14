@@ -22,6 +22,7 @@
 [![npm Version](https://img.shields.io/static/v1?label=npm&message=^10.9.0&color=cb0000&style=for-the-badge)](https://nodejs.org)
 
 <!-- TABLE OF CONTENTS -->
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -67,7 +68,7 @@
 
 # About the project
 
-[![Site preview](/public/social-image.png)](https://YuankunHuang.github.io)
+[![image-20250914125839489](C:\Users\yuankun.h\AppData\Roaming\Typora\typora-user-images\image-20250914125839489.png)](https://YuankunHuang.github.io)
 
 
 ## Technology stack 🛠️
@@ -163,6 +164,7 @@ You should have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/
     - Delete it.   
     - Take a screenshot of your version and rename it "social-image.png" and place it there.  
     
+
    Next time if you make changes, repeat from step 8.
 
 Questions about my work or collaboration opportunities? Feel free to contact me at buptforeverbean@gmail.com or connect via [LinkedIn](https://www.linkedin.com/in/yuankun-huang/).
@@ -172,6 +174,7 @@ Questions about my work or collaboration opportunities? Feel free to contact me 
 If you're interested in my work or have collaboration opportunities in game development, I'd love to hear from you! You can also star ⭐ this repository if you find it useful.
 
 **Contact:**
+
 - Email: buptforeverbean@gmail.com
 - LinkedIn: [Yuankun Huang](https://www.linkedin.com/in/yuankun-huang/)
 - GitHub: [YuankunHuang](https://github.com/YuankunHuang)

@@ -447,6 +447,209 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 80px 0;
+            background: #f1f5f9;
+            position: relative;
+        }
+
+        .tools-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tools-item:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .tools-item:hover::before {
+            width: 6px;
+        }
+
+        .tools-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tools-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .tools-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-prototype {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-exploring {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tools-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tools-features {
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            display: block;
+            color: var(--primary-medium);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .feature-item i {
+            color: #10b981;
+            width: 16px;
+        }
+
+        .tools-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tools-tag {
+            background: #f1f5f9;
+            color: var(--primary-medium);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tools-tag.highlighted {
+            background: var(--primary-light);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Tag Filtering System */
+        .tag-filters {
+            margin-bottom: 30px;
+        }
+
+        .tag-filters h5 {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .filter-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .filter-tag {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: #64748b;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .filter-tag:hover {
+            border-color: var(--primary-light);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        .filter-tag.active {
+            background: var(--bg-gradient);
+            border-color: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-tag.clear-all {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .filter-tag.clear-all:hover {
+            background: #fecaca;
+            border-color: #f87171;
+        }
+
+        .no-results {
+            color: #64748b;
+        }
+
+        .no-results h4 {
+            color: #475569;
+            margin-bottom: 10px;
+        }
+
+        /* Enhanced tag highlighting */
+        .tag.highlighted {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: var(--primary-dark) !important;
+            transform: scale(1.05);
+        }
         
         /* Blog Section */
         .blog-section {
@@ -591,6 +794,9 @@
                         <a class="nav-link" href="#featured">Projects</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#tools">Tools</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#research">Research</a>
                     </li>
                     <li class="nav-item">
@@ -691,6 +897,25 @@
                 <h2>Featured Projects</h2>
                 <p class="lead">Showcasing impactful mobile game development and performance optimization work</p>
             </div>
+
+            <!-- Core Tag Filters -->
+            <div class="tag-filters mb-4">
+                <div class="text-center">
+                    <div class="filter-tags">
+                        <button class="filter-tag" onclick="filterProjects('Unity')">Unity</button>
+                        <button class="filter-tag" onclick="filterProjects('Unreal')">Unreal</button>
+                        <button class="filter-tag" onclick="filterProjects('C#')">C#</button>
+                        <button class="filter-tag" onclick="filterProjects('C++')">C++</button>
+                        <button class="filter-tag" onclick="filterProjects('Mobile')">Mobile</button>
+                        <button class="filter-tag" onclick="filterProjects('XR')">XR</button>
+                        <button class="filter-tag" onclick="filterProjects('Performance')">Performance</button>
+                        <button class="filter-tag" onclick="filterProjects('Tools')">Tools</button>
+                        <button class="filter-tag clear-all" onclick="clearFilters()" style="display: none;">
+                            <i class="fas fa-times me-2"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
             
             <div class="row">
                 <!-- Project 1: Mythic Heroes -->
@@ -719,9 +944,9 @@
                                 <a href="#" class="btn-primary-custom" data-bs-toggle="modal" data-bs-target="#mythicModal">
                                     <i class="fas fa-eye me-2"></i>View Details
                                 </a>
-                                <a href="#mythicDemo" class="btn-outline-custom">
+                                <button onclick="showLiveDemo(1, 'mythic')" class="btn-outline-custom">
                                     <i class="fas fa-play me-2"></i>Play Demo
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -753,6 +978,9 @@
                                 <a href="#" class="btn-primary-custom" data-bs-toggle="modal" data-bs-target="#toolsModal">
                                     <i class="fas fa-eye me-2"></i>View Details
                                 </a>
+                                <button onclick="showLiveDemo(2, 'tools')" class="btn-outline-custom">
+                                    <i class="fas fa-play me-2"></i>Play Demo
+                                </button>
                                 <a href="#" class="btn-outline-custom">
                                     <i class="fab fa-github me-2"></i>Source Code
                                 </a>
@@ -762,42 +990,210 @@
                 </div>
             </div>
 
-            <!-- Mythic Heroes Demo Section -->
-            <div class="row mt-5" id="mythicDemo">
+            <!-- Dynamic Live Demo Section -->
+            <div class="row mt-5" id="liveDemo" style="display: none;">
                 <div class="col-12">
                     <div class="demo-section">
-                        <div class="d-flex align-items-center mb-3">
-                            <i class="fas fa-gamepad fa-2x text-primary me-3"></i>
-                            <div>
-                                <h3 class="mb-1">Mythic Heroes - Live Demo</h3>
-                                <p class="text-muted mb-0">Experience the performance-optimized gameplay in your browser</p>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i id="demoIcon" class="fas fa-gamepad fa-2x text-primary me-3"></i>
+                                <div>
+                                    <h3 class="mb-1" id="demoTitle">Project - Live Demo</h3>
+                                    <p class="text-muted mb-0" id="demoDescription">Experience the project features in your browser</p>
+                                </div>
                             </div>
+                            <button onclick="closeLiveDemo()" class="btn btn-outline-secondary btn-sm" title="Close Demo">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </div>
-                        <div class="demo-placeholder">
+                        <div class="demo-placeholder" id="demoContent">
                             <div>
                                 <i class="fas fa-cube fa-3x mb-3"></i>
-                                <p>Mythic Heroes WebGL Build</p>
-                                <small>Unity 2021.3 LTS • Optimized for 60fps • HybridCLR Enabled</small>
+                                <p id="demoPlaceholderTitle">Project Demo</p>
+                                <small id="demoPlaceholderTech">Unity 2021.3 LTS • Optimized Performance</small>
                             </div>
                         </div>
                         <div class="demo-controls">
                             <button class="btn-primary-custom">
-                                <i class="fas fa-play me-2"></i>Start Game
+                                <i class="fas fa-play me-2"></i>Start Demo
                             </button>
                             <button class="btn-outline-custom">
                                 <i class="fas fa-expand me-2"></i>Fullscreen
                             </button>
                             <button class="btn-outline-custom">
-                                <i class="fas fa-info me-2"></i>Performance Stats
+                                <i class="fab fa-github me-2"></i>View Source
+                            </button>
+                            <button class="btn-outline-custom">
+                                <i class="fas fa-info me-2"></i>Details
                             </button>
                         </div>
                         <div class="mt-3">
-                            <small class="text-muted">
-                                <strong>Demo Features:</strong> Character selection, battle system showcase, UI responsiveness test, performance monitoring
+                            <small class="text-muted" id="demoFeatures">
+                                <strong>Demo Features:</strong> Interactive showcase with optimized performance
                             </small>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Utilities Section -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tools & Utilities</h2>
+                <p class="lead">Development tools and utilities I've built to enhance productivity</p>
+            </div>
+
+            <!-- Core Tag Filters -->
+            <div class="tag-filters mb-4">
+                <div class="text-center">
+                    <div class="filter-tags">
+                        <button class="filter-tag" onclick="filterTools('Unity')">Unity</button>
+                        <button class="filter-tag" onclick="filterTools('Unreal')">Unreal</button>
+                        <button class="filter-tag" onclick="filterTools('C#')">C#</button>
+                        <button class="filter-tag" onclick="filterTools('C++')">C++</button>
+                        <button class="filter-tag" onclick="filterTools('Mobile')">Mobile</button>
+                        <button class="filter-tag" onclick="filterTools('XR')">XR</button>
+                        <button class="filter-tag" onclick="filterTools('Performance')">Performance</button>
+                        <button class="filter-tag" onclick="filterTools('Tools')">Tools</button>
+                        <button class="filter-tag clear-all" onclick="clearToolFilters()" style="display: none;">
+                            <i class="fas fa-times me-2"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tools-item" data-tags="Unity,Editor Tools,C#,Performance">
+                        <div class="tools-title">
+                            <div class="tools-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            Unity Performance Analyzer
+                            <span class="tools-status status-active">Active</span>
+                        </div>
+                        <p class="tools-description">
+                            Custom Unity Editor tools for real-time performance monitoring and optimization. 
+                            Helps development teams identify bottlenecks efficiently.
+                        </p>
+                        <div class="tools-features">
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Real-time Profiling</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Memory Leak Detection</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Automated Reports</span>
+                        </div>
+                        <div class="tools-tags">
+                            <span class="tools-tag">Unity</span>
+                            <span class="tools-tag">Editor Tools</span>
+                            <span class="tools-tag">C#</span>
+                            <span class="tools-tag">Performance</span>
+                        </div>
+                        <div class="tools-actions mt-3">
+                            <a href="#" class="btn-outline-custom">
+                                <i class="fab fa-github me-2"></i>View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="tools-item" data-tags="Unity,CI/CD,Mobile,Automation">
+                        <div class="tools-title">
+                            <div class="tools-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            Mobile Build Pipeline
+                            <span class="tools-status status-active">Active</span>
+                        </div>
+                        <p class="tools-description">
+                            Automated CI/CD pipeline for Unity mobile builds with multi-platform support, 
+                            automated testing, and deployment.
+                        </p>
+                        <div class="tools-features">
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Multi-platform Builds</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Automated Testing</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Asset Optimization</span>
+                        </div>
+                        <div class="tools-tags">
+                            <span class="tools-tag">Unity</span>
+                            <span class="tools-tag">CI/CD</span>
+                            <span class="tools-tag">Mobile</span>
+                            <span class="tools-tag">Automation</span>
+                        </div>
+                        <div class="tools-actions mt-3">
+                            <a href="#" class="btn-outline-custom">
+                                <i class="fab fa-github me-2"></i>View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="tools-item" data-tags="Unity,HybridCLR,Hot Update,Tools">
+                        <div class="tools-title">
+                            <div class="tools-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            HybridCLR Integration Kit
+                            <span class="tools-status status-prototype">Prototype</span>
+                        </div>
+                        <p class="tools-description">
+                            Streamlined toolkit for integrating HybridCLR hot-update system into Unity projects 
+                            with automated setup and configuration.
+                        </p>
+                        <div class="tools-features">
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>One-click Setup</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Configuration Templates</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Build Automation</span>
+                        </div>
+                        <div class="tools-tags">
+                            <span class="tools-tag">Unity</span>
+                            <span class="tools-tag">HybridCLR</span>
+                            <span class="tools-tag">Hot Update</span>
+                            <span class="tools-tag">Tools</span>
+                        </div>
+                        <div class="tools-actions mt-3">
+                            <a href="#" class="btn-outline-custom">
+                                <i class="fab fa-github me-2"></i>View Source
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="tools-item" data-tags="Unity,Code Quality,Analytics,Dashboard">
+                        <div class="tools-title">
+                            <div class="tools-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            Code Quality Dashboard
+                            <span class="tools-status status-exploring">Exploring</span>
+                        </div>
+                        <p class="tools-description">
+                            Comprehensive code quality monitoring dashboard for Unity projects with metrics 
+                            visualization and technical debt tracking.
+                        </p>
+                        <div class="tools-features">
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Code Metrics</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Technical Debt Tracking</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Team Analytics</span>
+                        </div>
+                        <div class="tools-tags">
+                            <span class="tools-tag">Unity</span>
+                            <span class="tools-tag">Code Quality</span>
+                            <span class="tools-tag">Analytics</span>
+                            <span class="tools-tag">Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-results text-center py-5" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h4>No tools match the selected tags</h4>
+                <p class="text-muted">Try selecting different tags or clear all filters</p>
             </div>
         </div>
     </section>
@@ -1180,8 +1576,233 @@
                     }
                 });
             });
-
         });
+
+        // Tag filtering functionality
+        let selectedProjectTags = [];
+        let selectedToolTags = [];
+
+        function filterProjects(tag) {
+            const button = event.target;
+            const isActive = button.classList.contains('active');
+            
+            if (isActive) {
+                // Remove tag
+                selectedProjectTags = selectedProjectTags.filter(t => t !== tag);
+                button.classList.remove('active');
+            } else {
+                // Add tag
+                selectedProjectTags.push(tag);
+                button.classList.add('active');
+            }
+            
+            updateProjectVisibility();
+            updateClearButton('#featured');
+        }
+
+        function filterTools(tag) {
+            const button = event.target;
+            const isActive = button.classList.contains('active');
+            
+            if (isActive) {
+                // Remove tag
+                selectedToolTags = selectedToolTags.filter(t => t !== tag);
+                button.classList.remove('active');
+            } else {
+                // Add tag
+                selectedToolTags.push(tag);
+                button.classList.add('active');
+            }
+            
+            updateToolVisibility();
+            updateClearButton('#tools');
+        }
+
+        function clearFilters() {
+            selectedProjectTags = [];
+            document.querySelectorAll('#featured .filter-tag').forEach(button => {
+                button.classList.remove('active');
+            });
+            updateProjectVisibility();
+            updateClearButton('#featured');
+        }
+
+        function clearToolFilters() {
+            selectedToolTags = [];
+            document.querySelectorAll('#tools .filter-tag').forEach(button => {
+                button.classList.remove('active');
+            });
+            updateToolVisibility();
+            updateClearButton('#tools');
+        }
+
+        function updateProjectVisibility() {
+            const projects = document.querySelectorAll('#featured .project-card');
+            let visibleCount = 0;
+            
+            projects.forEach(project => {
+                const projectTags = getProjectTags(project);
+                const isVisible = selectedProjectTags.length === 0 || 
+                    selectedProjectTags.every(tag => projectTags.includes(tag));
+                
+                if (isVisible) {
+                    project.style.display = 'block';
+                    visibleCount++;
+                    // Highlight matching tags
+                    highlightMatchingTags(project, selectedProjectTags);
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.querySelector('#featured .no-results');
+            if (noResults) {
+                noResults.style.display = (visibleCount === 0 && selectedProjectTags.length > 0) ? 'block' : 'none';
+            }
+        }
+
+        function updateToolVisibility() {
+            const tools = document.querySelectorAll('#tools .tools-item');
+            let visibleCount = 0;
+            
+            tools.forEach(tool => {
+                const toolTags = tool.dataset.tags ? tool.dataset.tags.split(',') : [];
+                const isVisible = selectedToolTags.length === 0 || 
+                    selectedToolTags.every(tag => toolTags.includes(tag));
+                
+                if (isVisible) {
+                    tool.style.display = 'block';
+                    visibleCount++;
+                    // Highlight matching tags
+                    highlightMatchingToolTags(tool, selectedToolTags);
+                } else {
+                    tool.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            const noResults = document.querySelector('#tools .no-results');
+            if (noResults) {
+                noResults.style.display = (visibleCount === 0 && selectedToolTags.length > 0) ? 'block' : 'none';
+            }
+        }
+
+        function getProjectTags(project) {
+            const tags = [];
+            project.querySelectorAll('.tag').forEach(tag => {
+                tags.push(tag.textContent.trim());
+            });
+            return tags;
+        }
+
+        function highlightMatchingTags(project, selectedTags) {
+            project.querySelectorAll('.tag').forEach(tag => {
+                const tagText = tag.textContent.trim();
+                if (selectedTags.includes(tagText)) {
+                    tag.classList.add('highlighted');
+                } else {
+                    tag.classList.remove('highlighted');
+                }
+            });
+        }
+
+        function highlightMatchingToolTags(tool, selectedTags) {
+            tool.querySelectorAll('.tools-tag').forEach(tag => {
+                const tagText = tag.textContent.trim();
+                if (selectedTags.includes(tagText)) {
+                    tag.classList.add('highlighted');
+                } else {
+                    tag.classList.remove('highlighted');
+                }
+            });
+        }
+
+        function updateClearButton(section) {
+            const clearButton = document.querySelector(`${section} .clear-all`);
+            const hasActiveTags = section === '#featured' ? 
+                selectedProjectTags.length > 0 : 
+                selectedToolTags.length > 0;
+            
+            if (clearButton) {
+                clearButton.style.display = hasActiveTags ? 'inline-block' : 'none';
+            }
+        }
+
+        // Project configurations - Each project has its own demo config
+        const projectDemoConfigs = {
+            1: { // Mythic Heroes
+                icon: 'fas fa-gamepad',
+                title: 'Mythic Heroes - Live Demo',
+                description: 'Experience the performance-optimized gameplay in your browser',
+                placeholderTitle: 'Mythic Heroes WebGL Build',
+                tech: 'Unity 2021.3 LTS • Optimized for 60fps • HybridCLR Enabled',
+                features: ['Character selection', 'Battle system showcase', 'UI responsiveness test', 'Performance monitoring'],
+                startText: 'Start Game'
+            },
+            2: { // Unity Performance Analyzer
+                icon: 'fas fa-tools',
+                title: 'Unity Performance Analyzer - Live Demo',
+                description: 'Interactive demonstration of real-time performance monitoring tools',
+                placeholderTitle: 'Performance Analyzer Dashboard',
+                tech: 'Unity Editor Tools • Real-time Monitoring • C# Implementation',
+                features: ['Real-time profiling', 'Memory analysis', 'Automated reporting', 'Performance charts'],
+                startText: 'Launch Analyzer'
+            },
+            3: { // HIVE Rehab
+                icon: 'fas fa-hand-paper',
+                title: 'HIVE Rehab - Gesture Training Demo',
+                description: 'Experience the gesture-driven rehabilitation training system',
+                placeholderTitle: 'HIVE Rehab Training Session',
+                tech: 'Unity • Leap Motion SDK • Clinical Data Integration',
+                features: ['Gesture recognition', 'Training exercises', 'Progress tracking', 'Clinical reports'],
+                startText: 'Start Training'
+            }
+        };
+
+        // Dynamic LiveDemo functionality - now uses project ID for binding
+        function showLiveDemo(projectId, fallbackType) {
+            const liveDemo = document.getElementById('liveDemo');
+            const demoIcon = document.getElementById('demoIcon');
+            const demoTitle = document.getElementById('demoTitle');
+            const demoDescription = document.getElementById('demoDescription');
+            const demoPlaceholderTitle = document.getElementById('demoPlaceholderTitle');
+            const demoPlaceholderTech = document.getElementById('demoPlaceholderTech');
+            const demoFeatures = document.getElementById('demoFeatures');
+
+            // Get project-specific configuration
+            const config = projectDemoConfigs[projectId] || projectDemoConfigs[1]; // Default to first project
+
+            // Update demo content using project configuration
+            demoIcon.className = `${config.icon} fa-2x text-primary me-3`;
+            demoTitle.textContent = config.title;
+            demoDescription.textContent = config.description;
+            demoPlaceholderTitle.textContent = config.placeholderTitle;
+            demoPlaceholderTech.textContent = config.tech;
+            demoFeatures.innerHTML = `<strong>Demo Features:</strong> ${config.features.join(', ')}`;
+
+            // Update start button text if available
+            const startButton = document.querySelector('.demo-controls .btn-primary-custom');
+            if (startButton && config.startText) {
+                startButton.innerHTML = `<i class="fas fa-play me-2"></i>${config.startText}`;
+            }
+
+            // Show the demo section
+            liveDemo.style.display = 'block';
+
+            // Smooth scroll to demo section
+            setTimeout(() => {
+                liveDemo.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 100);
+        }
+
+        function closeLiveDemo() {
+            const liveDemo = document.getElementById('liveDemo');
+            liveDemo.style.display = 'none';
+        }
     </script>
 </body>
 </html>
