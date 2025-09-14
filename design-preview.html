@@ -200,6 +200,37 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+
+        /* Project Type Tags in Project Cards */
+        .tag.project-type {
+            background: rgba(34, 197, 94, 0.8) !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .tag.project-type::before {
+            content: "🏢 ";
+            margin-right: 2px;
+        }
+
+        .tag.project-type[data-type="Personal"]::before {
+            content: "👤 ";
+        }
+
+        .tag.project-type[data-type="Academic"]::before {
+            content: "🎓 ";
+        }
+
+        .tag.project-type.highlighted {
+            background: rgba(34, 197, 94, 0.9) !important;
+        }
+
+        /* Enhanced tag highlighting */
+        .tag.highlighted {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: var(--primary-dark) !important;
+            transform: scale(1.05);
+        }
         
         .project-content {
             padding: 30px;
@@ -613,6 +644,31 @@
             transform: scale(1.05);
         }
 
+        /* Project Type Tags - Visual Distinction */
+        .tools-tag.project-type {
+            background: rgba(34, 197, 94, 0.8) !important;
+            color: white !important;
+            border: none !important;
+        }
+
+        .tools-tag.project-type::before {
+            content: "🏢 ";
+            margin-right: 2px;
+        }
+
+        .tools-tag.project-type[data-type="Personal"]::before {
+            content: "👤 ";
+        }
+
+        .tools-tag.project-type[data-type="Academic"]::before {
+            content: "🎓 ";
+        }
+
+        .tools-tag.project-type.highlighted {
+            background: rgba(34, 197, 94, 0.9) !important;
+            transform: scale(1.05);
+        }
+
         /* Tag Filtering System */
         .tag-filters {
             margin-bottom: 30px;
@@ -667,6 +723,49 @@
         .filter-tag.clear-all:hover {
             background: #fecaca;
             border-color: #f87171;
+        }
+
+        .filter-section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-medium);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Project Type Filter Tags */
+        .filter-tag.project-type {
+            background: white !important;
+            border-color: #e2e8f0 !important;
+            color: #64748b !important;
+        }
+
+        .filter-tag.project-type::before {
+            content: "🏢 ";
+            margin-right: 4px;
+        }
+
+        .filter-tag.project-type[data-type="Personal"]::before {
+            content: "👤 ";
+        }
+
+        .filter-tag.project-type[data-type="Academic"]::before {
+            content: "🎓 ";
+        }
+
+        .filter-tag.project-type:hover {
+            background: rgba(34, 197, 94, 0.1) !important;
+            border-color: rgba(34, 197, 94, 0.8) !important;
+            color: rgba(34, 197, 94, 1) !important;
+            transform: translateY(-2px);
+        }
+
+        .filter-tag.project-type.active {
+            background: rgba(34, 197, 94, 0.8) !important;
+            border-color: rgba(34, 197, 94, 0.9) !important;
+            color: white !important;
+            transform: translateY(-2px);
         }
 
         .no-results {
@@ -934,9 +1033,10 @@
                 <h2>Featured Projects</h2>
             </div>
 
-            <!-- Core Tag Filters -->
-            <div class="tag-filters mb-4">
+            <!-- Technology Filters -->
+            <div class="tag-filters mb-3">
                 <div class="text-center">
+                    <div class="filter-section-title">Technologies</div>
                     <div class="filter-tags">
                         <button class="filter-tag" onclick="filterProjects('Unity')">Unity</button>
                         <button class="filter-tag" onclick="filterProjects('Unreal')">Unreal</button>
@@ -946,9 +1046,21 @@
                         <button class="filter-tag" onclick="filterProjects('XR')">XR</button>
                         <button class="filter-tag" onclick="filterProjects('Performance')">Performance</button>
                         <button class="filter-tag" onclick="filterProjects('Tools')">Tools</button>
-                        <button class="filter-tag clear-all" onclick="clearFilters()" style="display: none;">
-                            <i class="fas fa-times me-2"></i>Clear All
+                        <button class="filter-tag clear-all" onclick="clearTechFilters()" style="display: none;">
+                            <i class="fas fa-times me-2"></i>Clear Tech
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Type Filters -->
+            <div class="tag-filters mb-4">
+                <div class="text-center">
+                    <div class="filter-section-title">Project Type</div>
+                    <div class="filter-tags">
+                        <button class="filter-tag project-type" data-type="Commercial" onclick="filterProjectType('Commercial')">Commercial</button>
+                        <button class="filter-tag project-type" data-type="Personal" onclick="filterProjectType('Personal')">Personal</button>
+                        <button class="filter-tag project-type" data-type="Academic" onclick="filterProjectType('Academic')">Academic</button>
                     </div>
                 </div>
             </div>
@@ -960,8 +1072,11 @@
                         <div class="project-image">
                             <div class="project-tags">
                                 <span class="tag">Unity</span>
-                                <span class="tag">Mobile</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">Android</span>
+                                <span class="tag">iOS</span>
                                 <span class="tag">RPG</span>
+                                <span class="tag project-type" data-type="Commercial">Commercial</span>
                             </div>
                             <i class="fas fa-gamepad"></i>
                         </div>
@@ -996,6 +1111,8 @@
                                 <span class="tag">Unity</span>
                                 <span class="tag">AI</span>
                                 <span class="tag">Shaders</span>
+                                <span class="tag">C#</span>
+                                <span class="tag project-type" data-type="Personal">Personal</span>
                             </div>
                             <i class="fas fa-brain"></i>
                         </div>
@@ -1080,9 +1197,10 @@
                 <h2>Tools & Utilities</h2>
             </div>
 
-            <!-- Core Tag Filters -->
-            <div class="tag-filters mb-4">
+            <!-- Technology Filters -->
+            <div class="tag-filters mb-3">
                 <div class="text-center">
+                    <div class="filter-section-title">Technologies</div>
                     <div class="filter-tags">
                         <button class="filter-tag" onclick="filterTools('Unity')">Unity</button>
                         <button class="filter-tag" onclick="filterTools('Unreal')">Unreal</button>
@@ -1092,16 +1210,28 @@
                         <button class="filter-tag" onclick="filterTools('XR')">XR</button>
                         <button class="filter-tag" onclick="filterTools('Performance')">Performance</button>
                         <button class="filter-tag" onclick="filterTools('Tools')">Tools</button>
-                        <button class="filter-tag clear-all" onclick="clearToolFilters()" style="display: none;">
-                            <i class="fas fa-times me-2"></i>Clear All
+                        <button class="filter-tag clear-all" onclick="clearToolTechFilters()" style="display: none;">
+                            <i class="fas fa-times me-2"></i>Clear Tech
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Type Filters -->
+            <div class="tag-filters mb-4">
+                <div class="text-center">
+                    <div class="filter-section-title">Project Type</div>
+                    <div class="filter-tags">
+                        <button class="filter-tag project-type" data-type="Commercial" onclick="filterToolType('Commercial')">Commercial</button>
+                        <button class="filter-tag project-type" data-type="Personal" onclick="filterToolType('Personal')">Personal</button>
+                        <button class="filter-tag project-type" data-type="Academic" onclick="filterToolType('Academic')">Academic</button>
                     </div>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-md-6">
-                    <div class="tools-item" data-tags="Unity,AI,Shaders,C#">
+                    <div class="tools-item" data-tags="Unity,AI,Shaders,C#,Personal">
                         <div class="tools-title">
                             <div class="tools-icon">
                                 <i class="fas fa-brain"></i>
@@ -1122,6 +1252,7 @@
                             <span class="tools-tag">AI</span>
                             <span class="tools-tag">Shaders</span>
                             <span class="tools-tag">C#</span>
+                            <span class="tools-tag project-type" data-type="Personal">Personal</span>
                         </div>
                         <div class="tools-actions mt-3">
                             <a href="https://github.com/YuankunHuang/SynthMind" target="_blank" class="btn-outline-custom">
@@ -1132,7 +1263,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="tools-item" data-tags="Unity,CI/CD,Mobile,Automation">
+                    <div class="tools-item" data-tags="Unity,CI/CD,Mobile,Automation,Personal">
                         <div class="tools-title">
                             <div class="tools-icon">
                                 <i class="fas fa-cogs"></i>
@@ -1154,6 +1285,7 @@
                             <span class="tools-tag">CI/CD</span>
                             <span class="tools-tag">Mobile</span>
                             <span class="tools-tag">Automation</span>
+                            <span class="tools-tag project-type" data-type="Personal">Personal</span>
                         </div>
                         <div class="tools-actions mt-3">
                             <a href="#" class="btn-outline-custom">
@@ -1164,7 +1296,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="tools-item" data-tags="Unity,HybridCLR,Hot Update,Tools">
+                    <div class="tools-item" data-tags="Unity,HybridCLR,Hot Update,Tools,Personal">
                         <div class="tools-title">
                             <div class="tools-icon">
                                 <i class="fas fa-sync-alt"></i>
@@ -1186,6 +1318,7 @@
                             <span class="tools-tag">HybridCLR</span>
                             <span class="tools-tag">Hot Update</span>
                             <span class="tools-tag">Tools</span>
+                            <span class="tools-tag project-type" data-type="Personal">Personal</span>
                         </div>
                         <div class="tools-actions mt-3">
                             <a href="#" class="btn-outline-custom">
@@ -1196,7 +1329,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="tools-item" data-tags="Unity,Code Quality,Analytics,Dashboard">
+                    <div class="tools-item" data-tags="Unity,Code Quality,Analytics,Dashboard,Personal">
                         <div class="tools-title">
                             <div class="tools-icon">
                                 <i class="fas fa-chart-line"></i>
@@ -1218,6 +1351,7 @@
                             <span class="tools-tag">Code Quality</span>
                             <span class="tools-tag">Analytics</span>
                             <span class="tools-tag">Dashboard</span>
+                            <span class="tools-tag project-type" data-type="Personal">Personal</span>
                         </div>
                     </div>
                 </div>
@@ -1610,7 +1744,9 @@
 
         // Tag filtering functionality
         let selectedProjectTags = [];
+        let selectedProjectType = '';
         let selectedToolTags = [];
+        let selectedToolType = '';
 
         function filterProjects(tag) {
             const button = event.target;
@@ -1648,8 +1784,40 @@
             updateClearButton('#tools');
         }
 
+        function filterProjectType(type) {
+            const button = event.target;
+            const isActive = button.classList.contains('active');
+            
+            // Clear all project type buttons first (single selection)
+            document.querySelectorAll('#featured .filter-tag.project-type').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (isActive) {
+                // Deselect current type
+                selectedProjectType = '';
+            } else {
+                // Select new type
+                selectedProjectType = type;
+                button.classList.add('active');
+            }
+            
+            updateProjectVisibility();
+            updateClearButton('#featured');
+        }
+
+        function clearTechFilters() {
+            selectedProjectTags = [];
+            document.querySelectorAll('#featured .filter-tag:not(.project-type)').forEach(button => {
+                button.classList.remove('active');
+            });
+            updateProjectVisibility();
+            updateClearButton('#featured');
+        }
+
         function clearFilters() {
             selectedProjectTags = [];
+            selectedProjectType = '';
             document.querySelectorAll('#featured .filter-tag').forEach(button => {
                 button.classList.remove('active');
             });
@@ -1657,8 +1825,40 @@
             updateClearButton('#featured');
         }
 
+        function filterToolType(type) {
+            const button = event.target;
+            const isActive = button.classList.contains('active');
+            
+            // Clear all tool type buttons first (single selection)
+            document.querySelectorAll('#tools .filter-tag.project-type').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (isActive) {
+                // Deselect current type
+                selectedToolType = '';
+            } else {
+                // Select new type
+                selectedToolType = type;
+                button.classList.add('active');
+            }
+            
+            updateToolVisibility();
+            updateClearButton('#tools');
+        }
+
+        function clearToolTechFilters() {
+            selectedToolTags = [];
+            document.querySelectorAll('#tools .filter-tag:not(.project-type)').forEach(button => {
+                button.classList.remove('active');
+            });
+            updateToolVisibility();
+            updateClearButton('#tools');
+        }
+
         function clearToolFilters() {
             selectedToolTags = [];
+            selectedToolType = '';
             document.querySelectorAll('#tools .filter-tag').forEach(button => {
                 button.classList.remove('active');
             });
@@ -1687,8 +1887,15 @@
             
             // Filter and collect visible projects from original set
             originalProjects.forEach(projectData => {
-                const isVisible = selectedProjectTags.length === 0 || 
+                // Technology tags use AND logic
+                const techMatch = selectedProjectTags.length === 0 || 
                     selectedProjectTags.every(tag => projectData.tags.includes(tag));
+                
+                // Project type uses single selection (OR logic is built-in since only one can be selected)
+                const typeMatch = selectedProjectType === '' || 
+                    projectData.tags.includes(selectedProjectType);
+                
+                const isVisible = techMatch && typeMatch;
                 
                 if (isVisible) {
                     // Clone the original element to avoid DOM issues
@@ -1697,7 +1904,9 @@
                     
                     // Highlight matching tags
                     if (project) {
-                        highlightMatchingTags(project, selectedProjectTags);
+                        const allSelectedTags = [...selectedProjectTags];
+                        if (selectedProjectType) allSelectedTags.push(selectedProjectType);
+                        highlightMatchingTags(project, allSelectedTags);
                     }
                     
                     // Re-bind demo button click event
@@ -1721,7 +1930,7 @@
                 visibleProjects.forEach((column) => {
                     projectsContainer.appendChild(column);
                 });
-            } else if (selectedProjectTags.length > 0) {
+            } else if (selectedProjectTags.length > 0 || selectedProjectType !== '') {
                 // Show no results message
                 const noResultsDiv = document.createElement('div');
                 noResultsDiv.className = 'col-12';
@@ -1758,8 +1967,15 @@
             
             // Filter and collect visible tools from original set
             originalTools.forEach(toolData => {
-                const isVisible = selectedToolTags.length === 0 || 
+                // Technology tags use AND logic
+                const techMatch = selectedToolTags.length === 0 || 
                     selectedToolTags.every(tag => toolData.tags.includes(tag));
+                
+                // Project type uses single selection (OR logic is built-in since only one can be selected)
+                const typeMatch = selectedToolType === '' || 
+                    toolData.tags.includes(selectedToolType);
+                
+                const isVisible = techMatch && typeMatch;
                 
                 if (isVisible) {
                     // Clone the original element to avoid DOM issues
@@ -1768,7 +1984,9 @@
                     
                     // Highlight matching tags
                     if (tool) {
-                        highlightMatchingToolTags(tool, selectedToolTags);
+                        const allSelectedTags = [...selectedToolTags];
+                        if (selectedToolType) allSelectedTags.push(selectedToolType);
+                        highlightMatchingToolTags(tool, allSelectedTags);
                     }
                     
                     visibleTools.push(columnClone);
@@ -1782,7 +2000,7 @@
                 visibleTools.forEach((toolColumn) => {
                     toolsContainer.appendChild(toolColumn);
                 });
-            } else if (selectedToolTags.length > 0) {
+            } else if (selectedToolTags.length > 0 || selectedToolType !== '') {
                 // Show no results message
                 const noResultsDiv = document.createElement('div');
                 noResultsDiv.className = 'col-12';
@@ -1829,12 +2047,12 @@
 
         function updateClearButton(section) {
             const clearButton = document.querySelector(`${section} .clear-all`);
-            const hasActiveTags = section === '#featured' ? 
+            const hasActiveTechTags = section === '#featured' ? 
                 selectedProjectTags.length > 0 : 
                 selectedToolTags.length > 0;
             
             if (clearButton) {
-                clearButton.style.display = hasActiveTags ? 'inline-block' : 'none';
+                clearButton.style.display = hasActiveTechTags ? 'inline-block' : 'none';
             }
         }
 

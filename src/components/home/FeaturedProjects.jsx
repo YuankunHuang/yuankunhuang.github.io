@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 
 const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
   const [selectedTags, setSelectedTags] = React.useState([]);
+  const [selectedProjectType, setSelectedProjectType] = React.useState('');
   const [activeDemoProject, setActiveDemoProject] = React.useState(null);
   const [originalProjects] = React.useState(projects || []);
 
@@ -17,14 +18,27 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     return ['Commercial', 'Personal', 'Academic', 'Open Source'].includes(tag);
   };
 
+  // Separate technology and project type tags
+  const technologyTags = coreTagFilters.filter(tag => !isProjectTypeTag(tag));
+  const projectTypeTags = coreTagFilters.filter(tag => isProjectTypeTag(tag));
+
   // Filter projects based on selected tags, always using original projects
   const filteredProjects = originalProjects.filter(project => {
-    if (selectedTags.length === 0) return true;
-    return selectedTags.every(tag => 
+    // Technology tags use AND logic
+    const techMatch = selectedTags.length === 0 || 
+      selectedTags.every(tag => 
+        project.tags.some(projectTag => 
+          projectTag.toLowerCase().includes(tag.toLowerCase())
+        )
+      );
+    
+    // Project type uses single selection
+    const typeMatch = selectedProjectType === '' || 
       project.tags.some(projectTag => 
-        projectTag.toLowerCase().includes(tag.toLowerCase())
-      )
-    );
+        projectTag.toLowerCase().includes(selectedProjectType.toLowerCase())
+      );
+    
+    return techMatch && typeMatch;
   });
 
   // Toggle tag selection
@@ -34,6 +48,21 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
         ? prev.filter(t => t !== tag)
         : [...prev, tag]
     );
+  };
+
+  // Toggle project type selection (single selection)
+  const toggleProjectType = (type) => {
+    setSelectedProjectType(prev => prev === type ? '' : type);
+  };
+
+  // Clear functions
+  const clearTechFilters = () => {
+    setSelectedTags([]);
+  };
+
+  const clearAllFilters = () => {
+    setSelectedTags([]);
+    setSelectedProjectType('');
   };
 
   // Handle demo actions
@@ -155,16 +184,16 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           <p className="lead">Showcasing impactful mobile game development and performance optimization work</p>
         </div>
 
-        {/* Core Tag Filters */}
-        {coreTagFilters && coreTagFilters.length > 0 && (
-          <div className="tag-filters mb-4">
+        {/* Technology Filters */}
+        {technologyTags && technologyTags.length > 0 && (
+          <div className="tag-filters mb-3">
             <div className="text-center">
+              <div className="filter-section-title">Technologies</div>
               <div className="filter-tags">
-                {coreTagFilters.map((tag, index) => (
+                {technologyTags.map((tag, index) => (
                   <button
                     key={index}
-                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''} ${isProjectTypeTag(tag) ? 'project-type' : ''}`}
-                    data-type={isProjectTypeTag(tag) ? tag : undefined}
+                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''}`}
                     onClick={() => toggleTag(tag)}
                   >
                     {tag}
@@ -173,11 +202,32 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                 {selectedTags.length > 0 && (
                   <button
                     className="filter-tag clear-all"
-                    onClick={() => setSelectedTags([])}
+                    onClick={clearTechFilters}
                   >
-                    <i className="fas fa-times me-2"></i>Clear All
+                    <i className="fas fa-times me-2"></i>Clear Tech
                   </button>
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Project Type Filters */}
+        {projectTypeTags && projectTypeTags.length > 0 && (
+          <div className="tag-filters mb-4">
+            <div className="text-center">
+              <div className="filter-section-title">Project Type</div>
+              <div className="filter-tags">
+                {projectTypeTags.map((tag, index) => (
+                  <button
+                    key={index}
+                    className={`filter-tag project-type ${selectedProjectType === tag ? 'active' : ''}`}
+                    data-type={tag}
+                    onClick={() => toggleProjectType(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
