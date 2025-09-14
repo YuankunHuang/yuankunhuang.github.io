@@ -6,13 +6,14 @@ import Col from "react-bootstrap/Col";
 const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
   const [selectedTags, setSelectedTags] = React.useState([]);
   const [activeDemoProject, setActiveDemoProject] = React.useState(null);
+  const [originalProjects] = React.useState(projects || []);
 
   if (!projects || projects.length === 0) {
     return null;
   }
 
-  // Filter projects based on selected tags
-  const filteredProjects = projects.filter(project => {
+  // Filter projects based on selected tags, always using original projects
+  const filteredProjects = originalProjects.filter(project => {
     if (selectedTags.length === 0) return true;
     return selectedTags.every(tag => 
       project.tags.some(projectTag => 
@@ -52,7 +53,7 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     console.log(`Starting demo for project ${projectId}`);
     
     // Find the project data
-    const project = projects.find(p => p.id === projectId);
+    const project = originalProjects.find(p => p.id === projectId);
     if (!project || !project.webDemo || project.webDemo.type !== 'unity') {
       console.error('Unity WebGL demo not configured for project:', projectId);
       return;
@@ -60,7 +61,7 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     
     const canvas = document.getElementById(`unityCanvas-${projectId}`);
     const loading = document.getElementById(`loading-${projectId}`);
-    const progress = document.getElementById(`progress-${projectId}`);
+    const progressBar = document.getElementById(`progress-${projectId}`);
     const loadingText = document.getElementById(`loadingText-${projectId}`);
     const percentage = document.getElementById(`percentage-${projectId}`);
     
@@ -94,8 +95,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
         const progressCallback = (progress) => {
           const percent = Math.round(progress * 100);
           if (percentage) percentage.textContent = `${percent}%`;
-          if (progress && progress.style) {
-            progress.style.width = `${percent}%`;
+          if (progressBar && progressBar.style) {
+            progressBar.style.width = `${percent}%`;
           }
           if (loadingText && percent < 100) {
             loadingText.textContent = `Loading... ${percent}%`;

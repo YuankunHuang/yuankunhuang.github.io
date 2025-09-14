@@ -3,7 +3,7 @@ import { useScrollPosition } from "../hooks/useScrollPosition";
 import useResizeObserver from "../hooks/useResizeObserver";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { mainBody, about, featuredProjects, research, blog, getInTouch } from "../editable-stuff/config.js";
+import { mainBody, about, featuredProjects, tools, research, blog, getInTouch } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
 
 const Navigation = React.forwardRef((props, ref) => {
@@ -30,6 +30,7 @@ const Navigation = React.forwardRef((props, ref) => {
       ? setIsTop(false)
       : setIsTop(true);
   }, [navBottom, navbarDimensions, ref, scrollPosition]);
+
 
   return (
     <Navbar
@@ -64,6 +65,14 @@ const Navigation = React.forwardRef((props, ref) => {
               href={process.env.PUBLIC_URL + "/#projects"}
             >
               Projects
+            </NavLink>
+          )}
+          {tools.show && (
+            <NavLink
+              className="nav-link"
+              href={process.env.PUBLIC_URL + "/#tools"}
+            >
+              Tools
             </NavLink>
           )}
           {research.show && (

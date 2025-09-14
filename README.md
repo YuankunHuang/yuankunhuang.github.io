@@ -1,203 +1,478 @@
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <h1 align="center">Yuankun Huang - Portfolio ✨</h1>
+# Yuankun Huang - Portfolio ✨
 
-  <p align="center">
-    Personal portfolio website showcasing my game development projects and professional experience as a Senior Unity Developer at IGG Canada.
-    <br/>
-    <strong>Live Site » </strong> 
-    <a href="https://YuankunHuang.github.io">YuankunHuang.github.io</a>
-    <br />
-    <br />
-    <a href="https://www.linkedin.com/in/yuankun-huang/">LinkedIn Profile</a>
-  </p>
-</p>
+Personal portfolio website showcasing game development projects and professional experience
+
+**🚀 Live Site:** [YuankunHuang.github.io](https://YuankunHuang.github.io)
+
+[![Portfolio Screenshot](/public/social-image.png)](https://YuankunHuang.github.io)
 
 ![GitHub stars](https://img.shields.io/github/stars/YuankunHuang/yuankunhuang.github.io?color=ffcc66&style=for-the-badge)
 [![GitHub forks](https://img.shields.io/github/forks/YuankunHuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/YuankunHuang/yuankunhuang.github.io/network)
 [![GitHub license](https://img.shields.io/github/license/YuankunHuang/yuankunhuang.github.io?style=for-the-badge)](https://github.com/YuankunHuang/yuankunhuang.github.io/blob/master/LICENSE)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yuankun-huang/)
-[![Node Version](https://img.shields.io/static/v1?label=Node&message=^22.12.0&color=026e00&style=for-the-badge)](https://nodejs.org)
-[![npm Version](https://img.shields.io/static/v1?label=npm&message=^10.9.0&color=cb0000&style=for-the-badge)](https://nodejs.org)
 
-<!-- TABLE OF CONTENTS -->
+## ✨ Features
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About the project</a>
-      <ul>
-        <li>
-          <a href="#technology-stack-">Technology Stack 🛠️</a>
-        </li>
-        <li>
-          <a href="#structure-">Structure ⚓</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting started 💗</a>
-      <ul>
-        <li>
-          <a href="#prerequisites-">Prerequisites 🍪</a>
-        </li>
-        <li>
-          <a href="#setup-and-deployment-">Setup And Deployment 🔧</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="#support-my-work">Support my work</a>
-    </li>
-    <li>
-      <a href="#showcase-">Showcase 🚀</a>
-    </li>
-    <li>
-      <a href="#versão-em-português-brazil">Versão em Português :brazil:</a>
-    </li>
-    <li>
-      <a href="#notice">Notice</a>
-    </li>
-    <li>
-      <a href="#stargazers-over-time">Stargazers over time</a>
-    </li>
-  </ol>
-</details>
+- **Dynamic Tag Filtering** - Filter projects by Unity, C++, Mobile, XR, etc.
+- **Interactive WebGL Demos** - Embedded Unity game demos
+- **Responsive Design** - Optimized for all devices
+- **Modern UI** - Clean, professional design with smooth animations
+- **Customizable Sections** - Easy-to-modify configuration system
 
-# About the project
+## 🛠️ Technology Stack
 
-[![image-20250914125839489](C:\Users\yuankun.h\AppData\Roaming\Typora\typora-user-images\image-20250914125839489.png)](https://YuankunHuang.github.io)
+- **Frontend:** React 18, Bootstrap 5, SCSS
+- **Build Tools:** Create React App, Node.js
+- **Deployment:** GitHub Pages
+- **APIs:** GitHub API for dynamic content
 
+## 🚀 Quick Start
 
-## Technology stack 🛠️
+### Prerequisites
+- [Node.js](https://nodejs.org/en/) (>= 22.12.0)
+- [Git](https://git-scm.com/)
+- GitHub account
 
-Dependencies defined in package.json:
+### Installation
 
-[Reactjs](https://reactjs.org/)
-| [Bootstrap](https://getbootstrap.com/)
-| [Typist](https://github.com/jstejada/react-typist)
-| [GitHub API](https://developer.github.com/v3/repos/)
-| [Instagram API](https://www.instagram.com/developer/embedding/)
-
-## Structure ⚓
-
-- Navigation bar (optional)
-- Body
-  - Name | Profession
-  - Contact / Follow / Find me / Facebook / LinkedIn / GitHub / Instagram / Email / CodePen
-  - Resume | About me
-- About Me
-  - Display picture (optional)
-  - About myself, my Interests, Goals and Hobbies
-  - Things I'm good at (Skills)
-  - Resume button
-- Recent Projects (using GitHub API) (optional)
-- Leadership (optional)
-  - Paragraph
-  - Carousel images
-- Skills (optional)
-  - Technical Skills
-  - Soft Skills
-- Footer
-  - Footer Note (optional)
-  - Copyrights - open source
-  - Acknowledgements
-
-# About This Portfolio 💗
-
-This is my personal portfolio website showcasing my experience as a Senior Unity Developer. The site is built with React and highlights my game development projects, technical skills, and professional background.
-
-## Prerequisites 🍪
-
-You should have [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/) installed on your PC. You should also own a GitHub account.
-
-## Setup And Deployment 🔧
-
-1. To Get Started, Fork this repository to your GitHub account:
-2. Clone the forked repo from your account using:
-
+1. **Fork and Clone**
    ```bash
-     git clone https://github.com/<your-username>/home.git
+   git clone https://github.com/<your-username>/yuankunhuang.github.io.git
+   cd yuankunhuang.github.io
    ```
 
-3. Open in editor and edit [src/editable-stuff/config.js](./src/editable-stuff/config.js) file.
-
-4. Add your resume as <resume.pdf> in place of [src/editable-stuff/resume.pdf](./src/editable-stuff/)
-
-5. Edit [title](./public/index.html#L34) and meta [description](./public/index.html#L13) in [public/index.html](./public/index.html).
-6. Change URL in [package.json](./package.json) file:
-
-   ```json
-    "homepage": "https://<your-username>.github.io/home"
-   ```
-
-   Or for deployment at custom domain, refer [create-react-app.dev](https://create-react-app.dev/docs/deployment/#step-1-add-homepage-to-packagejson)
-
-7. After editing run the following bash commands:
-
+2. **Install Dependencies**
    ```bash
    npm install
+   ```
+
+3. **Start Development Server**
+   ```bash
    npm start
    ```
 
-8. To deploy website, run:
-
+4. **Build and Deploy**
    ```bash
-    npm run build
-    npm run deploy
+   npm run build
+   npm run deploy
    ```
 
-   Or for deployment at \<username>.github.io, refer [READMEdocs/custom-deployment.md](./READMEdocs/custom-deployment.md) and [pages.js](./pages.js)
+## ⚙️ Configuration Guide
 
-9. Congrats your site is up and running. To see it live, visit:
+All website content is configurable through the main configuration file. This guide shows you how to modify every aspect of your portfolio.
 
-   ```https
-     https://<your-username>.github.io/home
-   ```
+### 📍 Main Configuration File
 
-10. To change the thumbnail image:
+**File:** `src/editable-stuff/config.js`
 
-    - Navigate to the "public" folder.  
-    - There you will see "social-image.png".  
-    - Delete it.   
-    - Take a screenshot of your version and rename it "social-image.png" and place it there.  
+This single file controls all website content. Here's how to customize each section:
+
+---
+
+### 🏠 Navigation & Hero Section
+
+```javascript
+// Navigation Bar
+const navBar = {
+  show: true,
+  links: [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Tools", href: "#tools" },
+    { name: "Research", href: "#research" },
+    { name: "Skills", href: "#skills" }
+  ]
+};
+
+// Hero/Main Section
+const mainBody = {
+  gradientColors: "#4484ce, #1ad7c0, #ff9b11, #9b59b6, #ff7f7f, #ecf0f1",
+  firstName: "Your",
+  middleName: "Full",
+  lastName: "Name",
+  message: "Passionate about changing the world with technology.",
+  icons: [
+    {
+      image: "fab fa-github",
+      url: "https://github.com/yourusername"
+    },
+    {
+      image: "fab fa-linkedin-in", 
+      url: "https://www.linkedin.com/in/yourprofile"
+    }
+    // Add more social links
+  ]
+};
+```
+
+**How to modify:**
+- Change your name in `firstName`, `middleName`, `lastName`
+- Update `message` with your personal tagline
+- Add/remove social icons in the `icons` array
+- Customize gradient colors for the background
+
+---
+
+### 👤 About Me Section
+
+```javascript
+const about = {
+  show: true,
+  heading: "About Me",
+  imageLink: "/path/to/your/photo.jpg", // Optional profile photo
+  imageSize: 375,
+  message: "Your detailed professional biography goes here. Talk about your experience, passion, and what drives you in your career.",
+  resume: "/path/to/your/resume.pdf", // Link to your resume
+  skills: ["Unity Development", "C# Programming", "Mobile Games", "Performance Optimization"]
+};
+```
+
+**How to modify:**
+- Update `heading` to change the section title
+- Set `imageLink` to your profile photo path (put image in `public/` folder)
+- Write your story in `message`
+- Add your resume PDF to `public/` folder and update `resume` path
+- List your key skills in the `skills` array
+
+---
+
+### 🎮 Featured Projects Section
+
+```javascript
+const featuredProjects = [
+  {
+    id: 1,
+    title: "Your Project Name",
+    description: "Detailed description of your project, its impact, and your role.",
+    image: "/api/placeholder/400/300", // Project thumbnail
+    tags: ["Unity", "Mobile", "C#"], // Technology tags
+    highlights: [
+      "Key Achievement 1",
+      "Key Achievement 2", 
+      "Key Achievement 3"
+    ],
     
+    // Demo Configuration (optional)
+    demoConfig: {
+      icon: "fas fa-gamepad",
+      title: "Project Name - Live Demo",
+      description: "Experience the project in your browser",
+      placeholderTitle: "Project WebGL Build",
+      tech: "Unity 2021.3 LTS • Optimized Performance",
+      features: ["Feature 1", "Feature 2", "Feature 3"],
+      startText: "Start Demo",
+      
+      // For Unity WebGL demos
+      webDemo: {
+        type: "unity",
+        buildPath: "/webgl-demos/your-project",
+        buildName: "your-project-build",
+        width: 960,
+        height: 600,
+        loadingText: "Loading your game...",
+        companyName: "Your Company",
+        productName: "Game Name",
+        productVersion: "1.0"
+      }
+    },
+    
+    // External Links
+    githubUrl: "https://github.com/yourusername/project",
+    projectUrl: "https://yourproject.com",
+    projectUrlLabel: "Visit Website",
+    detailsModal: "projectModal1", // For detail popup
+    status: "shipped" // shipped, active, research
+  }
+  // Add more projects...
+];
 
-   Next time if you make changes, repeat from step 8.
+// Core tags for filtering
+const coreTagFilters = ["Unity", "Unreal", "C#", "C++", "Mobile", "XR", "Performance", "Tools"];
+```
 
-Questions about my work or collaboration opportunities? Feel free to contact me at buptforeverbean@gmail.com or connect via [LinkedIn](https://www.linkedin.com/in/yuankun-huang/).
+**How to modify:**
+- **Add new project:** Copy the project object structure and fill in your details
+- **Project thumbnail:** Add image to `public/` folder and update `image` path
+- **Technology tags:** Add relevant technologies to `tags` array
+- **Achievements:** List key accomplishments in `highlights`
+- **Demo integration:** See [WebGL Integration Guide](#webgl-integration) below
+- **Filter tags:** Modify `coreTagFilters` to match your technology stack
 
-# Connect with me
+---
 
-If you're interested in my work or have collaboration opportunities in game development, I'd love to hear from you! You can also star ⭐ this repository if you find it useful.
+### 🔧 Tools & Utilities Section
 
-**Contact:**
+```javascript
+const tools = {
+  show: true,
+  heading: "Tools & Utilities",
+  subtitle: "Development tools and utilities I've built",
+  projects: [
+    {
+      title: "Tool Name",
+      description: "What this tool does and why it's useful",
+      tags: ["Unity", "Editor Tools", "C#"],
+      status: "active", // active, prototype, exploring
+      icon: "fas fa-tools",
+      githubUrl: "https://github.com/yourusername/tool",
+      features: ["Feature 1", "Feature 2", "Feature 3"],
+      category: "Development Tools"
+    }
+    // Add more tools...
+  ],
+  coreTagFilters: ["Unity", "Tools", "Automation"] // Same filtering system
+};
+```
 
-- Email: buptforeverbean@gmail.com
-- LinkedIn: [Yuankun Huang](https://www.linkedin.com/in/yuankun-huang/)
-- GitHub: [YuankunHuang](https://github.com/YuankunHuang)
+---
 
-# Professional Experience 🚀
+### 🔬 Research & Exploration Section
 
-**Senior Unity Developer** at IGG Canada (2021 - Present)
-- Mobile game development with Unity and C#
-- Cross-platform game programming
-- Technical leadership and project collaboration
+```javascript
+const research = {
+  show: true,
+  heading: "Research & Exploration",
+  subtitle: "Current learning projects and technical investigations", 
+  projects: [
+    {
+      title: "Research Topic",
+      description: "What you're researching and why it matters",
+      tags: ["New Technology", "Research"],
+      status: "exploring",
+      icon: "fas fa-search",
+      progress: "In Progress", // Current status
+      timeline: "2024 - Present"
+    }
+    // Add more research projects...
+  ]
+};
+```
 
-**Education:** Master's Degree from Centre for Digital Media (2019 - 2021)
+---
 
-## Key Skills
-- **Game Development:** Unity Engine, C#, C++
-- **Mobile Development:** Cross-platform mobile games
-- **Technical Leadership:** Project management and team collaboration
-- **Continuous Learning:** Multiple professional certifications in game development
+### 💪 Skills Section
 
-# License
+```javascript
+const skills = {
+  show: true,
+  heading: "Skills",
+  hardSkills: [
+    { name: "Unity Development", value: 90 },
+    { name: "C# Programming", value: 85 },
+    { name: "Mobile Game Development", value: 80 }
+    // Add more skills with proficiency levels (0-100)
+  ],
+  softSkills: [
+    { name: "Team Leadership", value: 85 },
+    { name: "Problem Solving", value: 90 }
+    // Add soft skills
+  ]
+};
+```
+
+---
+
+### 📝 Blog Section (Optional)
+
+```javascript
+const blog = {
+  show: true, // Set to false to hide
+  heading: "Recent Posts",
+  subtitle: "Thoughts on game development and technology"
+};
+```
+
+---
+
+### 📞 Contact Section
+
+```javascript
+const getInTouch = {
+  show: true,
+  heading: "Get In Touch",
+  message: "Whether you're interested in my work or have collaboration opportunities, I'd love to hear from you!",
+  email: "your.email@example.com"
+};
+```
+
+---
+
+## 🎮 WebGL Integration Guide
+
+To add Unity WebGL demos to your projects:
+
+### 1. File Structure
+```
+public/
+├── webgl-demos/
+│   ├── your-project/
+│   │   ├── Build/
+│   │   │   ├── your-project.loader.js
+│   │   │   ├── your-project.framework.js
+│   │   │   ├── your-project.data
+│   │   │   └── your-project.wasm
+│   │   └── StreamingAssets/ (if needed)
+```
+
+### 2. Unity Build Settings
+- **Platform:** WebGL
+- **Compression:** Gzip (recommended)
+- **Build file name:** Match `buildName` in config
+
+### 3. Project Configuration
+Add `webDemo` object to your project in `featuredProjects` array (see example above).
+
+### 4. Demo Features
+- ✅ Real-time loading progress
+- ✅ Responsive canvas sizing
+- ✅ Fullscreen support
+- ✅ Error handling
+- ✅ Mobile optimization
+
+---
+
+## 🎨 Visual Customization
+
+### Colors and Themes
+**File:** `src/scss/_variables.scss`
+
+```scss
+// Primary colors
+:root {
+  --primary-color: #667eea;
+  --primary-light: #764ba2;
+  --primary-dark: #1a202c;
+  --bg-neutral: #f7fafc;
+  --bg-white: #ffffff;
+}
+```
+
+### Typography
+**File:** `src/scss/_typography.scss`
+
+```scss
+// Font families
+$font-primary: 'Inter', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+
+// Font sizes
+$font-size-h1: 3rem;
+$font-size-h2: 2.5rem;
+```
+
+### Layout and Spacing
+**File:** `src/scss/_ui-enhancements.scss`
+
+Modify section padding, margins, and responsive breakpoints.
+
+---
+
+## 🚀 Deployment
+
+### GitHub Pages (Recommended)
+1. **Set homepage in package.json:**
+   ```json
+   "homepage": "https://yourusername.github.io"
+   ```
+
+2. **Deploy:**
+   ```bash
+   npm run deploy
+   ```
+
+### Custom Domain
+1. **Add CNAME file in public/:**
+   ```
+   yourdomain.com
+   ```
+
+2. **Configure DNS:**
+   - Point your domain to GitHub Pages IPs
+   - See [GitHub Pages documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
+
+---
+
+## 📁 File Structure
+
+```
+src/
+├── components/
+│   └── home/
+│       ├── AboutMe.jsx          # About section
+│       ├── FeaturedProjects.jsx # Projects with WebGL demos
+│       ├── Tools.jsx            # Tools & utilities
+│       ├── Research.jsx         # Research projects
+│       ├── Skills.jsx           # Skills showcase
+│       └── GetInTouch.jsx       # Contact section
+├── editable-stuff/
+│   ├── config.js               # 🎯 MAIN CONFIGURATION FILE
+│   └── resume.pdf              # Your resume
+├── scss/
+│   ├── _variables.scss         # Colors and theme variables
+│   ├── _typography.scss        # Font and text styles
+│   └── _ui-enhancements.scss   # Layout and component styles
+└── App.js                      # Main application component
+
+public/
+├── webgl-demos/               # Unity WebGL builds
+├── images/                    # Your images and photos
+├── resume.pdf                # Your resume (copy from src/editable-stuff/)
+├── social-image.png          # Social sharing thumbnail
+└── index.html                # Page metadata and title
+```
+
+---
+
+## 🔧 Advanced Customization
+
+### Adding New Sections
+1. **Create component:** `src/components/home/NewSection.jsx`
+2. **Add to config:** Define data structure in `config.js`
+3. **Import in App.js:** Add import and JSX element
+4. **Style:** Add CSS in `_ui-enhancements.scss`
+
+### Custom Animations
+**File:** `src/scss/_animations.scss`
+
+```scss
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+  animation: fadeInUp 0.6s ease-out;
+}
+```
+
+### SEO Optimization
+**File:** `public/index.html`
+
+```html
+<title>Your Name - Game Developer Portfolio</title>
+<meta name="description" content="Your professional description for search engines" />
+<meta property="og:title" content="Your Name - Portfolio" />
+<meta property="og:description" content="Your description" />
+<meta property="og:image" content="%PUBLIC_URL%/social-image.png" />
+```
+
+---
+
+## 📞 Support
+
+Questions about customization or need help with setup?
+
+- **Email:** buptforeverbean@gmail.com
+- **LinkedIn:** [Yuankun Huang](https://www.linkedin.com/in/yuankun-huang/)
+- **Issues:** [Create a GitHub issue](https://github.com/YuankunHuang/yuankunhuang.github.io/issues)
+
+---
+
+## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-*Built with React • Deployed on GitHub Pages • Last updated: 2024*
+*Built with React • Deployed on GitHub Pages • Optimized for game developers*

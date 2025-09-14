@@ -37,7 +37,6 @@ const AboutMe = ({ heading, message, stats, skills, resume }) => {
       <Container>
         <div className="section-title">
           <h2>{heading}</h2>
-          <p className="lead">Passionate Unity developer focused on crafting exceptional mobile gaming experiences</p>
         </div>
         
         <Row>

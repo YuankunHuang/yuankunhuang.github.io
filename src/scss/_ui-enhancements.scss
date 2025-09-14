@@ -56,8 +56,7 @@ body {
   transition: all 0.3s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   color: var(--primary-dark) !important;
   background: #f0f9ff;
 }
@@ -227,7 +226,7 @@ body {
   border-radius: 20px;
   box-shadow: var(--card-shadow);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 40px;
   position: relative;
   
@@ -604,16 +603,18 @@ body {
   border: 2px solid #e2e8f0;
   color: var(--text-secondary);
   padding: 8px 16px;
-  border-radius: 25px;
+  border-radius: 25px !important;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  outline: none;
   
   &:hover {
     border-color: var(--primary-light);
     color: var(--primary-dark);
     transform: translateY(-2px);
+    border-radius: 25px !important;
   }
   
   &.active {
@@ -621,6 +622,12 @@ body {
     border-color: var(--primary-light);
     color: white;
     transform: translateY(-2px);
+    border-radius: 25px !important;
+  }
+  
+  &:focus {
+    border-radius: 25px !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
   }
   
   &.clear-all {
@@ -644,21 +651,7 @@ body {
   }
 }
 
-// LiveDemo Animation
-#liveDemo {
-  animation: slideInUp 0.5s ease-out;
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+// LiveDemo - No extra animations for cleaner filtering experience
 
 .demo-section {
   background: white;

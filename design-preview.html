@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuankun Huang - Enhanced Portfolio Design Preview</title>
+    <title>Yuankun Huang - Game Developer Portfolio (Preview)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -125,7 +125,7 @@
             transition: all 0.3s ease;
         }
         
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover {
             color: var(--primary-dark) !important;
             background: #f0f9ff;
         }
@@ -164,6 +164,12 @@
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
+        }
+        
+        /* Smooth filtering animations */
+        .col-lg-6, .col-md-6 {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .project-image {
@@ -785,7 +791,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
+                        <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
@@ -824,6 +830,10 @@
                     <div class="hero-content">
                         <h1>Yuankun Huang</h1>
                         <p class="lead">Senior Unity Developer crafting robust mobile gaming experiences with expertise in performance optimization and system architecture.</p>
+                        <div class="alert alert-info mb-4" style="background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3); color: white;">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Design Preview:</strong> This showcases the latest portfolio features including dynamic tag filtering, WebGL demos, and modern UI enhancements.
+                        </div>
                         <div class="mt-4">
                             <a href="#about" class="btn btn-light btn-lg me-3">About Me</a>
                             <a href="#featured" class="btn btn-outline-light btn-lg">View My Work</a>
@@ -843,7 +853,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>About Me</h2>
-                <p class="lead">Passionate Unity developer focused on crafting exceptional mobile gaming experiences</p>
             </div>
             
             <div class="row">
@@ -895,7 +904,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Featured Projects</h2>
-                <p class="lead">Showcasing impactful mobile game development and performance optimization work</p>
             </div>
 
             <!-- Core Tag Filters -->
@@ -1043,7 +1051,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Tools & Utilities</h2>
-                <p class="lead">Development tools and utilities I've built to enhance productivity</p>
             </div>
 
             <!-- Core Tag Filters -->
@@ -1203,7 +1210,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Research & Exploration</h2>
-                <p class="lead">Current learning projects and technical explorations</p>
             </div>
             
             <div class="row">
@@ -1303,7 +1309,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Personal Blog</h2>
-                <p class="lead">Sharing insights, tutorials, and thoughts on game development</p>
             </div>
             
             <div class="blog-card">
@@ -1334,7 +1339,6 @@
         <div class="container">
             <div class="section-title">
                 <h2>Get In Touch</h2>
-                <p class="lead">I enjoy connecting with fellow developers and exploring collaboration opportunities</p>
             </div>
             
             <div class="row">
@@ -1636,55 +1640,134 @@
             updateClearButton('#tools');
         }
 
+        // Store original projects on first load
+        let originalProjects = [];
+        
+        function initializeProjects() {
+            if (originalProjects.length === 0) {
+                originalProjects = Array.from(document.querySelectorAll('#featured .col-lg-6')).map(column => ({
+                    element: column.cloneNode(true),
+                    tags: getProjectTags(column.querySelector('.project-card'))
+                }));
+            }
+        }
+
         function updateProjectVisibility() {
-            const projects = document.querySelectorAll('#featured .project-card');
-            let visibleCount = 0;
+            // Initialize on first run
+            initializeProjects();
             
-            projects.forEach(project => {
-                const projectTags = getProjectTags(project);
+            const projectsContainer = document.querySelector('#featured .row');
+            let visibleProjects = [];
+            
+            // Filter and collect visible projects from original set
+            originalProjects.forEach(projectData => {
                 const isVisible = selectedProjectTags.length === 0 || 
-                    selectedProjectTags.every(tag => projectTags.includes(tag));
+                    selectedProjectTags.every(tag => projectData.tags.includes(tag));
                 
                 if (isVisible) {
-                    project.style.display = 'block';
-                    visibleCount++;
+                    // Clone the original element to avoid DOM issues
+                    const columnClone = projectData.element.cloneNode(true);
+                    const project = columnClone.querySelector('.project-card');
+                    
                     // Highlight matching tags
-                    highlightMatchingTags(project, selectedProjectTags);
-                } else {
-                    project.style.display = 'none';
+                    if (project) {
+                        highlightMatchingTags(project, selectedProjectTags);
+                    }
+                    
+                    // Re-bind demo button click event
+                    const demoButton = columnClone.querySelector('button[onclick*="showLiveDemo"]');
+                    if (demoButton) {
+                        const originalOnClick = demoButton.getAttribute('onclick');
+                        demoButton.removeAttribute('onclick');
+                        demoButton.addEventListener('click', function() {
+                            eval(originalOnClick);
+                        });
+                    }
+                    
+                    visibleProjects.push(columnClone);
                 }
             });
             
-            // Show/hide no results message
-            const noResults = document.querySelector('#featured .no-results');
-            if (noResults) {
-                noResults.style.display = (visibleCount === 0 && selectedProjectTags.length > 0) ? 'block' : 'none';
+            // Clear container and re-add visible projects in order
+            projectsContainer.innerHTML = '';
+            
+            if (visibleProjects.length > 0) {
+                visibleProjects.forEach((column) => {
+                    projectsContainer.appendChild(column);
+                });
+            } else if (selectedProjectTags.length > 0) {
+                // Show no results message
+                const noResultsDiv = document.createElement('div');
+                noResultsDiv.className = 'col-12';
+                noResultsDiv.innerHTML = `
+                    <div class="no-results text-center py-5">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h4>No projects match the selected tags</h4>
+                        <p class="text-muted">Try selecting different tags or clear all filters</p>
+                    </div>
+                `;
+                projectsContainer.appendChild(noResultsDiv);
+            }
+        }
+
+        // Store original tools on first load
+        let originalTools = [];
+        
+        function initializeTools() {
+            if (originalTools.length === 0) {
+                originalTools = Array.from(document.querySelectorAll('#tools .col-md-6')).map(column => ({
+                    element: column.cloneNode(true),
+                    tags: column.querySelector('.tools-item')?.dataset.tags ? 
+                          column.querySelector('.tools-item').dataset.tags.split(',') : []
+                }));
             }
         }
 
         function updateToolVisibility() {
-            const tools = document.querySelectorAll('#tools .tools-item');
-            let visibleCount = 0;
+            // Initialize on first run
+            initializeTools();
             
-            tools.forEach(tool => {
-                const toolTags = tool.dataset.tags ? tool.dataset.tags.split(',') : [];
+            const toolsContainer = document.querySelector('#tools .row');
+            let visibleTools = [];
+            
+            // Filter and collect visible tools from original set
+            originalTools.forEach(toolData => {
                 const isVisible = selectedToolTags.length === 0 || 
-                    selectedToolTags.every(tag => toolTags.includes(tag));
+                    selectedToolTags.every(tag => toolData.tags.includes(tag));
                 
                 if (isVisible) {
-                    tool.style.display = 'block';
-                    visibleCount++;
+                    // Clone the original element to avoid DOM issues
+                    const columnClone = toolData.element.cloneNode(true);
+                    const tool = columnClone.querySelector('.tools-item');
+                    
                     // Highlight matching tags
-                    highlightMatchingToolTags(tool, selectedToolTags);
-                } else {
-                    tool.style.display = 'none';
+                    if (tool) {
+                        highlightMatchingToolTags(tool, selectedToolTags);
+                    }
+                    
+                    visibleTools.push(columnClone);
                 }
             });
             
-            // Show/hide no results message
-            const noResults = document.querySelector('#tools .no-results');
-            if (noResults) {
-                noResults.style.display = (visibleCount === 0 && selectedToolTags.length > 0) ? 'block' : 'none';
+            // Clear container and re-add visible tools in order
+            toolsContainer.innerHTML = '';
+            
+            if (visibleTools.length > 0) {
+                visibleTools.forEach((toolColumn) => {
+                    toolsContainer.appendChild(toolColumn);
+                });
+            } else if (selectedToolTags.length > 0) {
+                // Show no results message
+                const noResultsDiv = document.createElement('div');
+                noResultsDiv.className = 'col-12';
+                noResultsDiv.innerHTML = `
+                    <div class="no-results text-center py-5">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h4>No tools match the selected tags</h4>
+                        <p class="text-muted">Try selecting different tags or clear all filters</p>
+                    </div>
+                `;
+                toolsContainer.appendChild(noResultsDiv);
             }
         }
 
@@ -1804,5 +1887,79 @@
             liveDemo.style.display = 'none';
         }
     </script>
+
+    <!-- Feature Highlight Section -->
+    <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 0; color: white;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="mb-4">✨ Portfolio Features Preview</h2>
+                <p class="lead mb-5">Showcasing the latest enhancements and capabilities</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-filter fa-3x mb-3" style="color: rgba(255,255,255,0.8);"></i>
+                        <h4>Smart Tag Filtering</h4>
+                        <p>Dynamic filtering by technology (Unity, C++, XR, Mobile)</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-gamepad fa-3x mb-3" style="color: rgba(255,255,255,0.8);"></i>
+                        <h4>WebGL Game Demos</h4>
+                        <p>Interactive Unity games embedded directly in browser</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="text-center">
+                        <i class="fas fa-tools fa-3x mb-3" style="color: rgba(255,255,255,0.8);"></i>
+                        <h4>Developer Tools</h4>
+                        <p>Dedicated showcase for development utilities</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="https://yuankunhuang.github.io" class="btn btn-light btn-lg me-3">
+                    <i class="fas fa-external-link-alt me-2"></i>View Live Site
+                </a>
+                <a href="https://github.com/YuankunHuang/yuankunhuang.github.io" class="btn btn-outline-light btn-lg">
+                    <i class="fab fa-github me-2"></i>Source Code
+                </a>
+            </div>
+        </div>
+    </section>
+
+            
+        }); // End DOMContentLoaded
+    </script>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background: var(--primary-dark); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h5>Portfolio Preview - Yuankun Huang</h5>
+                    <p>This is a static preview demonstrating the React-based portfolio design. The live site includes dynamic functionality, real-time data, and WebGL integration.</p>
+                    <p><strong>Tech Stack:</strong> React 18 • Bootstrap 5 • SCSS • Unity WebGL • GitHub Pages</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://yuankunhuang.github.io" class="text-light">Live Portfolio</a></li>
+                        <li><a href="https://github.com/YuankunHuang/yuankunhuang.github.io" class="text-light">GitHub Repository</a></li>
+                        <li><a href="https://www.linkedin.com/in/yuankun-huang/" class="text-light">LinkedIn Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2);">
+            <div class="text-center">
+                <p class="mb-0">© 2024 Yuankun Huang • Game Developer Portfolio • Open Source</p>
+                <small style="opacity: 0.7;">Static preview showcasing modern portfolio features and design</small>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

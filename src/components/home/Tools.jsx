@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 
 const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
   const [selectedTags, setSelectedTags] = React.useState([]);
+  const [originalProjects] = React.useState(projects || []);
 
   if (!projects || projects.length === 0) {
     return null;
@@ -28,8 +29,8 @@ const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
     return textMap[status] || "Active";
   };
 
-  // Filter projects based on selected tags
-  const filteredProjects = projects.filter(project => {
+  // Filter projects based on selected tags, always using original projects
+  const filteredProjects = originalProjects.filter(project => {
     if (selectedTags.length === 0) return true;
     return selectedTags.every(tag => 
       project.tags.some(projectTag => 
