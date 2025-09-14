@@ -1,0 +1,557 @@
+// ========================================
+// Professional Color System & Typography
+// ========================================
+
+// ----------------------------------------
+// PROFESSIONAL COLOR PALETTE
+// ----------------------------------------
+:root {
+  // Primary Brand Colors
+  --primary-dark: #1a365d;      // Deep navy for headings
+  --primary-medium: #2c5282;    // Medium blue for accents
+  --primary-light: #4299e1;     // Light blue for links
+  
+  // Neutral Colors
+  --neutral-900: #1a202c;       // Darkest text
+  --neutral-800: #2d3748;       // Dark text
+  --neutral-700: #4a5568;       // Medium text
+  --neutral-600: #718096;       // Light text
+  --neutral-500: #a0aec0;       // Subtle text
+  --neutral-100: #f7fafc;       // Light background
+  --neutral-50: #fbfdfe;        // Lightest background
+  
+  // Semantic Colors
+  --success: #38a169;
+  --warning: #d69e2e;
+  --error: #e53e3e;
+  
+  // Background Colors
+  --bg-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-section: #fafbfc;        // Soft off-white instead of pure white
+  --bg-alt: #f4f6f8;           // Slightly darker alternative
+  
+  // Text Colors with proper contrast
+  --text-on-dark: rgba(255, 255, 255, 0.95);
+  --text-on-light: var(--neutral-800);
+  --text-subtle: var(--neutral-600);
+}
+
+// ----------------------------------------
+// 1. HERO SECTION - PROPER CONTRAST
+// ----------------------------------------
+
+// Hero background with better contrast
+.bgstyle {
+  background: var(--bg-hero) !important;
+  background-size: 100% 100% !important;
+  position: relative;
+  
+  // Add subtle overlay for better text contrast
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 0;
+  }
+  
+  // Ensure content is above overlay
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Hero text with proper contrast - WHITE TEXT ON DARK GRADIENT
+.bgstyle {
+  .title {
+    color: rgba(255, 255, 255, 1) !important;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  .display-1 {
+    font-weight: 700 !important;
+    color: rgba(255, 255, 255, 0.98) !important;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+    letter-spacing: -0.025em !important;
+  }
+  
+  .display-4 {
+    font-weight: 700 !important;
+    color: rgba(255, 255, 255, 0.98) !important;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7) !important;
+    letter-spacing: -0.025em !important;
+  }
+  
+  .lead {
+    font-weight: 400 !important;
+    line-height: 1.7 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+// ----------------------------------------
+// 2. CONTENT SECTIONS - CLEAN HIERARCHY
+// ----------------------------------------
+
+// CONTENT SECTIONS - DARK TEXT ON LIGHT BACKGROUNDS
+h1, .h1 {
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  text-shadow: none !important;
+}
+
+h2, .h2 {
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+  margin-bottom: 1.5rem !important;
+  text-shadow: none !important;
+}
+
+h3, .h3 {
+  font-weight: 600 !important;
+  color: #34495e !important;
+  text-shadow: none !important;
+}
+
+// Body text - DARK ON LIGHT
+body {
+  color: #2c3e50 !important;
+  line-height: 1.65 !important;
+}
+
+p {
+  color: #4a5568 !important;
+  line-height: 1.7 !important;
+}
+
+.lead {
+  color: #4a5568 !important;
+  font-weight: 600 !important;
+  line-height: 1.7 !important;
+}
+
+// ----------------------------------------
+// 3. NAVBAR - PROFESSIONAL & READABLE
+// ----------------------------------------
+
+.navbar {
+  transition: all 0.3s ease !important;
+}
+
+// Transparent navbar on hero
+.navbar-transparent {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+// White navbar on content - softer background
+.navbar-white {
+  background: rgba(250, 251, 252, 0.95) !important;  // Matches new bg-section
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+.navbar-brand {
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  transition: all 0.3s ease !important;
+}
+
+// Brand text on transparent navbar (over gradient background)
+.navbar-transparent .navbar-brand {
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+}
+
+// Brand text on white navbar (over light content) - softer color
+.navbar-white .navbar-brand {
+  color: #4a5568 !important;  // Lighter, less harsh than #2c3e50
+  text-shadow: none !important;
+}
+
+.nav-link {
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+}
+
+// Nav links on transparent navbar (over gradient)
+.navbar-transparent .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+  
+  &:hover {
+    color: rgba(255, 255, 255, 1) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-1px) !important;
+  }
+}
+
+// Nav links on white navbar (over light content)
+.navbar-white .nav-link {
+  color: #4a5568 !important;
+  text-shadow: none !important;
+  
+  &:hover {
+    color: #2c3e50 !important;
+    background: #f4f6f8 !important;  // Matches bg-alt
+    transform: translateY(-1px) !important;
+  }
+}
+
+// ----------------------------------------
+// 4. SECTIONS - PROPER BACKGROUNDS
+// ----------------------------------------
+
+// About Me section - clean white background
+.jumbotron {
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  
+  &#aboutme {
+    background: var(--bg-section) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+  
+  &.bg-white {
+    background: var(--bg-section) !important;
+  }
+  
+  &.bg-light {
+    background: var(--bg-alt) !important;
+  }
+}
+
+// Skills section alternating background
+#skills {
+  background: var(--bg-alt) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+// Projects section
+#projects {
+  background: var(--bg-section) !important;
+}
+
+// ----------------------------------------
+// 5. SECTION HEADINGS - VISUAL HIERARCHY
+// ----------------------------------------
+
+// Section headings - clear and readable
+.display-4.text-center {
+  color: #2c3e50 !important;
+  position: relative;
+  margin-bottom: 3rem !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2980b9) !important;
+    margin: 1.5rem auto 0 !important;
+    border-radius: 2px !important;
+  }
+}
+
+// ----------------------------------------
+// 6. CARDS - CLEAN & PROFESSIONAL
+// ----------------------------------------
+
+.card {
+  background: var(--bg-section) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  
+  &:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-6px) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+  }
+  
+  .card-body {
+    padding: 1.75rem !important;
+  }
+  
+  .card-title {
+    font-weight: 600 !important;
+    color: var(--primary-dark) !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.1rem !important;
+  }
+  
+  .card-text {
+    color: var(--neutral-700) !important;
+    line-height: 1.65 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  // Project cards specific styling
+  .text-muted {
+    color: var(--neutral-600) !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+// ----------------------------------------
+// 7. SKILLS SECTION - PROFESSIONAL STYLING
+// ----------------------------------------
+
+.skills-tabs {
+  border: none !important;
+  justify-content: center !important;
+  margin-bottom: 2rem !important;
+  
+  .nav-link {
+    font-weight: 600 !important;
+    color: var(--neutral-600) !important;
+    text-shadow: none !important;
+    border: 2px solid transparent !important;
+    border-radius: 8px !important;
+    margin: 0 0.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: transparent !important;
+    
+    &.active {
+      background: var(--primary-dark) !important;
+      color: white !important;
+      border-color: var(--primary-dark) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3) !important;
+    }
+    
+    &:hover:not(.active) {
+      color: var(--primary-dark) !important;
+      background-color: var(--neutral-100) !important;
+      border-color: var(--neutral-100) !important;
+      transform: translateY(-1px) !important;
+    }
+  }
+}
+
+// Skills progress bars
+.progress {
+  height: 10px !important;
+  border-radius: 6px !important;
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 1rem !important;
+  
+  .progress-bar {
+    background: linear-gradient(90deg, var(--primary-medium), var(--primary-light)) !important;
+    border-radius: 6px !important;
+    position: relative !important;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      width: 3px;
+      height: 12px;
+      background: var(--primary-dark);
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+  }
+}
+
+// Skill labels
+.skills-tab .lead {
+  font-weight: 500 !important;
+  color: var(--neutral-800) !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 1rem !important;
+}
+
+// ----------------------------------------
+// 8. BUTTONS - PROFESSIONAL STYLING
+// ----------------------------------------
+
+.btn-outline-dark {
+  font-weight: 600 !important;
+  border: 2px solid var(--primary-dark) !important;
+  color: var(--primary-dark) !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  
+  &:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(26, 54, 93, 0.3) !important;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.2) !important;
+  }
+}
+
+// ----------------------------------------
+// 9. SOCIAL ICONS - REFINED STYLING
+// ----------------------------------------
+
+.socialicons {
+  font-size: 1.6rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  padding: 0.5rem !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  
+  &:hover {
+    color: var(--text-on-dark) !important;
+    transform: translateY(-3px) scale(1.1) !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+// ----------------------------------------
+// 10. EXPERIENCE SECTION
+// ----------------------------------------
+
+// Experience cards
+.card.experience-card {
+  margin-bottom: 2rem !important;
+  
+  .card-body {
+    padding: 2rem !important;
+  }
+  
+  h5 {
+    color: var(--primary-dark) !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .text-muted {
+    color: var(--neutral-600) !important;
+    font-style: italic !important;
+  }
+}
+
+// ----------------------------------------
+// 11. FOOTER ENHANCEMENTS
+// ----------------------------------------
+
+footer {
+  background: var(--bg-alt) !important;
+  color: var(--neutral-700) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  
+  .badge {
+    background: var(--primary-dark) !important;
+    color: white !important;
+    font-weight: 500 !important;
+  }
+  
+  a {
+    color: var(--primary-medium) !important;
+    text-decoration: none !important;
+    
+    &:hover {
+      color: var(--primary-dark) !important;
+    }
+  }
+  
+  small {
+    color: var(--neutral-600) !important;
+  }
+}
+
+// ----------------------------------------
+// 12. RESPONSIVE OPTIMIZATIONS
+// ----------------------------------------
+
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  h2, .h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .socialicons {
+    font-size: 1.4rem !important;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+  
+  .btn-outline-dark {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+// ----------------------------------------
+// 13. ACCESSIBILITY & MODERN FEATURES
+// ----------------------------------------
+
+// Focus states
+*:focus {
+  outline: 2px solid var(--primary-light) !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth !important;
+}
+
+// Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .display-4, h1, h2, h3 {
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+  
+  .bgstyle::before {
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .card {
+    border-width: 2px !important;
+    border-color: #000 !important;
+  }
+}
