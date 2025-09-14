@@ -121,7 +121,7 @@ const featuredProjects = [
     image: "/api/placeholder/400/300", // Replace with actual image path
     
     // Project tags (项目标签) - Add/remove/modify as needed
-    tags: ["Unity", "Mobile", "Idle RPG"],
+    tags: ["Unity", "C#", "Android", "iOS", "RPG"],
     
     // Achievement highlights (成就亮点)
     highlights: [
@@ -169,29 +169,29 @@ const featuredProjects = [
   },
   {
     id: 2,
-    title: "Unity Performance Analyzer",
-    description: "Custom Unity Editor tools for real-time performance monitoring and optimization. Helps development teams identify and fix performance bottlenecks efficiently.",
+    title: "SynthMind - AI Game Framework",
+    description: "Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools. Features custom build pipelines and game data configuration systems.",
     image: "/api/placeholder/400/300",
-    tags: ["Unity", "Tools", "Editor"],
+    tags: ["Unity", "AI", "Shaders", "C#"],
     highlights: [
-      "Real-time Profiling",
-      "Memory Leak Detection", 
-      "Automated Reports",
-      "70% Designer Self-Service"
+      "Custom AI Integration Framework",
+      "Advanced Shader Programming", 
+      "Game Data Configuration Tool",
+      "Automated Build Pipeline"
     ],
-    githubUrl: "https://github.com/YuankunHuang",
-    detailsModal: "toolsModal",
+    githubUrl: "https://github.com/YuankunHuang/SynthMind",
+    detailsModal: "synthMindModal",
     status: "active",
     
-    // Demo configuration for Performance Analyzer
+    // Demo configuration for SynthMind
     demoConfig: {
-      icon: "fas fa-tools",
-      title: "Unity Performance Analyzer - Live Demo",
-      description: "Interactive demonstration of real-time performance monitoring tools",
-      placeholderTitle: "Performance Analyzer Dashboard",
-      tech: "Unity Editor Tools • Real-time Monitoring • C# Implementation",
-      features: ["Real-time profiling", "Memory analysis", "Automated reporting", "Performance charts"],
-      startText: "Launch Analyzer"
+      icon: "fas fa-brain",
+      title: "SynthMind - AI Framework Demo",
+      description: "Experience the AI-driven game mechanics and visual effects system",
+      placeholderTitle: "SynthMind AI Framework",
+      tech: "Unity • C# • Custom Shaders • AI Integration • Python Tools",
+      features: ["AI behavior system", "Real-time shader effects", "Data configuration", "Build automation"],
+      startText: "Launch Framework"
     }
   },
   {
@@ -231,14 +231,14 @@ const tools = {
   subtitle: "Development tools and utilities I've built to enhance productivity",
   projects: [
     {
-      title: "Unity Performance Analyzer",
-      description: "Custom Unity Editor tools for real-time performance monitoring and optimization. Helps development teams identify bottlenecks efficiently.",
-      tags: ["Unity", "Editor Tools", "C#", "Performance"],
+      title: "SynthMind AI Framework",
+      description: "Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools.",
+      tags: ["Unity", "AI", "Shaders", "C#"],
       status: "active",
-      icon: "fas fa-tachometer-alt",
-      githubUrl: "https://github.com/YuankunHuang",
-      features: ["Real-time Profiling", "Memory Leak Detection", "Automated Reports"],
-      category: "Unity Tools"
+      icon: "fas fa-brain",
+      githubUrl: "https://github.com/YuankunHuang/SynthMind",
+      features: ["AI Behavior Integration", "Custom Shader Pipeline", "Game Data Configuration"],
+      category: "AI Framework"
     },
     {
       title: "Mobile Build Pipeline",

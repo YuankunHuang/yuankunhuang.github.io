@@ -314,16 +314,30 @@ body {
 .btn-primary-custom {
   background: var(--bg-gradient);
   border: none;
-  border-radius: 25px;
+  border-radius: 25px !important;
   padding: 12px 25px;
   color: white;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  outline: none;
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    color: white;
+    border-radius: 25px !important;
+  }
+  
+  &:focus {
+    border-radius: 25px !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    color: white;
+  }
+  
+  &:active {
+    border-radius: 25px !important;
+    transform: translateY(0);
     color: white;
   }
 }
@@ -332,18 +346,32 @@ body {
   border: 2px solid var(--primary-medium);
   color: var(--primary-medium);
   background: transparent;
-  border-radius: 25px;
+  border-radius: 25px !important;
   padding: 10px 25px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
   display: inline-block;
   margin: 3px;
+  outline: none;
   
   &:hover {
     background: var(--primary-medium);
     color: white;
     transform: translateY(-2px);
+    text-decoration: none;
+    border-radius: 25px !important;
+  }
+  
+  &:focus {
+    border-radius: 25px !important;
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
+    text-decoration: none;
+  }
+  
+  &:active {
+    border-radius: 25px !important;
+    transform: translateY(0);
     text-decoration: none;
   }
 }
@@ -658,7 +686,6 @@ body {
   border: 2px dashed #e5e7eb;
   border-radius: 15px;
   padding: 40px;
-  text-align: center;
   margin: 30px 0;
   position: relative;
   overflow: hidden;
@@ -679,6 +706,7 @@ body {
   color: #9ca3af;
   font-size: 1.2rem;
   margin: 20px 0;
+  text-align: center;
 }
 
 .demo-controls {

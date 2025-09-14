@@ -242,17 +242,31 @@
         .btn-primary-custom {
             background: var(--bg-gradient);
             border: none;
-            border-radius: 25px;
+            border-radius: 25px !important;
             padding: 12px 25px;
             color: white;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            outline: none;
         }
         
         .btn-primary-custom:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+            border-radius: 25px !important;
+        }
+        
+        .btn-primary-custom:focus {
+            border-radius: 25px !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            color: white;
+        }
+        
+        .btn-primary-custom:active {
+            border-radius: 25px !important;
+            transform: translateY(0);
             color: white;
         }
         
@@ -260,17 +274,31 @@
             border: 2px solid var(--primary-medium);
             color: var(--primary-medium);
             background: transparent;
-            border-radius: 25px;
+            border-radius: 25px !important;
             padding: 10px 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            outline: none;
         }
         
         .btn-outline-custom:hover {
             background: var(--primary-medium);
             color: white;
             transform: translateY(-2px);
+            border-radius: 25px !important;
+        }
+        
+        .btn-outline-custom:focus {
+            border-radius: 25px !important;
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.2);
+            text-decoration: none;
+        }
+        
+        .btn-outline-custom:active {
+            border-radius: 25px !important;
+            transform: translateY(0);
+            text-decoration: none;
         }
         
         /* Web Demo Section */
@@ -279,7 +307,6 @@
             border: 2px dashed #e5e7eb;
             border-radius: 15px;
             padding: 40px;
-            text-align: center;
             margin: 30px 0;
             position: relative;
             overflow: hidden;
@@ -295,6 +322,7 @@
             color: #9ca3af;
             font-size: 1.2rem;
             margin: 20px 0;
+            text-align: center;
         }
         
         .demo-controls {
@@ -966,21 +994,20 @@
                         <div class="project-image">
                             <div class="project-tags">
                                 <span class="tag">Unity</span>
-                                <span class="tag">Tools</span>
-                                <span class="tag">Editor</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Shaders</span>
                             </div>
-                            <i class="fas fa-tools"></i>
+                            <i class="fas fa-brain"></i>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Unity Performance Analyzer</h3>
+                            <h3 class="project-title">SynthMind - AI Game Framework</h3>
                             <p class="project-description">
-                                Custom Unity Editor tools for real-time performance monitoring and optimization. 
-                                Helps development teams identify and fix performance bottlenecks efficiently.
+                                Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools.
                             </p>
                             <div class="project-highlights">
-                                <span class="highlight-item">Real-time Profiling</span>
-                                <span class="highlight-item">Memory Leak Detection</span>
-                                <span class="highlight-item">Automated Reports</span>
+                                <span class="highlight-item">Custom AI Integration Framework</span>
+                                <span class="highlight-item">Advanced Shader Programming</span>
+                                <span class="highlight-item">Game Data Configuration Tool</span>
                             </div>
                             <div class="project-actions">
                                 <a href="#" class="btn-primary-custom" data-bs-toggle="modal" data-bs-target="#toolsModal">
@@ -1074,31 +1101,30 @@
             
             <div class="row">
                 <div class="col-md-6">
-                    <div class="tools-item" data-tags="Unity,Editor Tools,C#,Performance">
+                    <div class="tools-item" data-tags="Unity,AI,Shaders,C#">
                         <div class="tools-title">
                             <div class="tools-icon">
-                                <i class="fas fa-tachometer-alt"></i>
+                                <i class="fas fa-brain"></i>
                             </div>
-                            Unity Performance Analyzer
+                            SynthMind AI Framework
                             <span class="tools-status status-active">Active</span>
                         </div>
                         <p class="tools-description">
-                            Custom Unity Editor tools for real-time performance monitoring and optimization. 
-                            Helps development teams identify bottlenecks efficiently.
+                            Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools.
                         </p>
                         <div class="tools-features">
-                            <span class="feature-item"><i class="fas fa-check me-2"></i>Real-time Profiling</span>
-                            <span class="feature-item"><i class="fas fa-check me-2"></i>Memory Leak Detection</span>
-                            <span class="feature-item"><i class="fas fa-check me-2"></i>Automated Reports</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>AI Behavior Integration</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Custom Shader Pipeline</span>
+                            <span class="feature-item"><i class="fas fa-check me-2"></i>Game Data Configuration</span>
                         </div>
                         <div class="tools-tags">
                             <span class="tools-tag">Unity</span>
-                            <span class="tools-tag">Editor Tools</span>
+                            <span class="tools-tag">AI</span>
+                            <span class="tools-tag">Shaders</span>
                             <span class="tools-tag">C#</span>
-                            <span class="tools-tag">Performance</span>
                         </div>
                         <div class="tools-actions mt-3">
-                            <a href="#" class="btn-outline-custom">
+                            <a href="https://github.com/YuankunHuang/SynthMind" target="_blank" class="btn-outline-custom">
                                 <i class="fab fa-github me-2"></i>View Source
                             </a>
                         </div>
@@ -1460,7 +1486,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Unity Performance Analyzer - Developer Tools</h5>
+                    <h5 class="modal-title">SynthMind - AI Game Framework</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -1823,14 +1849,14 @@
                 features: ['Character selection', 'Battle system showcase', 'UI responsiveness test', 'Performance monitoring'],
                 startText: 'Start Game'
             },
-            2: { // Unity Performance Analyzer
-                icon: 'fas fa-tools',
-                title: 'Unity Performance Analyzer - Live Demo',
-                description: 'Interactive demonstration of real-time performance monitoring tools',
-                placeholderTitle: 'Performance Analyzer Dashboard',
-                tech: 'Unity Editor Tools • Real-time Monitoring • C# Implementation',
-                features: ['Real-time profiling', 'Memory analysis', 'Automated reporting', 'Performance charts'],
-                startText: 'Launch Analyzer'
+            2: { // SynthMind AI Framework
+                icon: 'fas fa-brain',
+                title: 'SynthMind - AI Framework Demo',
+                description: 'Experience the AI-driven game mechanics and visual effects system',
+                placeholderTitle: 'SynthMind AI Framework',
+                tech: 'Unity • C# • Custom Shaders • AI Integration • Python Tools',
+                features: ['AI behavior system', 'Real-time shader effects', 'Data configuration', 'Build automation'],
+                startText: 'Launch Framework'
             },
             3: { // HIVE Rehab
                 icon: 'fas fa-hand-paper',
