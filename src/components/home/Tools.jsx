@@ -10,6 +10,11 @@ const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
   if (!projects || projects.length === 0) {
     return null;
   }
+  
+  // Helper function to check if a tag is a project type
+  const isProjectTypeTag = (tag) => {
+    return ['Commercial', 'Personal', 'Academic', 'Open Source'].includes(tag);
+  };
 
   const getStatusClass = (status) => {
     const statusMap = {
@@ -64,7 +69,8 @@ const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
                 {coreTagFilters.map((tag, index) => (
                   <button
                     key={index}
-                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''}`}
+                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''} ${isProjectTypeTag(tag) ? 'project-type' : ''}`}
+                    data-type={isProjectTypeTag(tag) ? tag : undefined}
                     onClick={() => toggleTag(tag)}
                   >
                     {tag}
@@ -113,7 +119,8 @@ const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
                   {tool.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex} 
-                      className={`tools-tag ${selectedTags.includes(tag) ? 'highlighted' : ''}`}
+                      className={`tools-tag ${selectedTags.includes(tag) ? 'highlighted' : ''} ${isProjectTypeTag(tag) ? 'project-type' : ''}`}
+                      data-type={isProjectTypeTag(tag) ? tag : undefined}
                     >
                       {tag}
                     </span>

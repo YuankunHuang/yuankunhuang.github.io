@@ -121,7 +121,7 @@ const featuredProjects = [
     image: "/api/placeholder/400/300", // Replace with actual image path
     
     // Project tags (项目标签) - Add/remove/modify as needed
-    tags: ["Unity", "C#", "Android", "iOS", "RPG"],
+    tags: ["Unity", "C#", "Android", "iOS", "RPG", "Commercial"],
     
     // Achievement highlights (成就亮点)
     highlights: [
@@ -172,7 +172,7 @@ const featuredProjects = [
     title: "SynthMind - AI Game Framework",
     description: "Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools. Features custom build pipelines and game data configuration systems.",
     image: "/api/placeholder/400/300",
-    tags: ["Unity", "AI", "Shaders", "C#"],
+    tags: ["Unity", "AI", "Shaders", "C#", "Personal"],
     highlights: [
       "Custom AI Integration Framework",
       "Advanced Shader Programming", 
@@ -199,7 +199,7 @@ const featuredProjects = [
     title: "HIVE Rehab - Gesture Training",
     description: "Leap Motion neuro-rehabilitation game with gesture-driven training loops and clinical data logging for stroke recovery research.",
     image: "/api/placeholder/400/300", 
-    tags: ["Unity", "Healthcare", "Leap Motion"],
+    tags: ["Unity", "Healthcare", "Leap Motion", "Academic"],
     highlights: [
       "< 20ms Interaction Latency",
       "Clinical Data Export",
@@ -233,7 +233,7 @@ const tools = {
     {
       title: "SynthMind AI Framework",
       description: "Advanced Unity framework integrating AI-driven game mechanics with sophisticated shader programming and data management tools.",
-      tags: ["Unity", "AI", "Shaders", "C#"],
+      tags: ["Unity", "AI", "Shaders", "C#", "Personal"],
       status: "active",
       icon: "fas fa-brain",
       githubUrl: "https://github.com/YuankunHuang/SynthMind",
@@ -243,7 +243,7 @@ const tools = {
     {
       title: "Mobile Build Pipeline",
       description: "Automated CI/CD pipeline for Unity mobile builds with multi-platform support, automated testing, and deployment.",
-      tags: ["Unity", "CI/CD", "Mobile", "Automation"],
+      tags: ["Unity", "CI/CD", "Mobile", "Automation", "Personal"],
       status: "active", 
       icon: "fas fa-cogs",
       githubUrl: "https://github.com/YuankunHuang",
@@ -253,7 +253,7 @@ const tools = {
     {
       title: "HybridCLR Integration Kit",
       description: "Streamlined toolkit for integrating HybridCLR hot-update system into Unity projects with automated setup and configuration.",
-      tags: ["Unity", "HybridCLR", "Hot Update", "Tools"],
+      tags: ["Unity", "HybridCLR", "Hot Update", "Tools", "Personal"],
       status: "prototype",
       icon: "fas fa-sync-alt",
       githubUrl: "https://github.com/YuankunHuang",
@@ -263,7 +263,7 @@ const tools = {
     {
       title: "Code Quality Dashboard", 
       description: "Comprehensive code quality monitoring dashboard for Unity projects with metrics visualization and technical debt tracking.",
-      tags: ["Unity", "Code Quality", "Analytics", "Dashboard"],
+      tags: ["Unity", "Code Quality", "Analytics", "Dashboard", "Personal"],
       status: "exploring",
       icon: "fas fa-chart-line",
       features: ["Code Metrics", "Technical Debt Tracking", "Team Analytics"],
@@ -271,7 +271,7 @@ const tools = {
     }
   ],
   // Core tags for filtering - configurable
-  coreTagFilters: ["Unity", "Unreal", "C#", "C++", "Mobile", "XR", "Performance", "Tools"]
+  coreTagFilters: ["Unity", "Unreal", "C#", "C++", "Mobile", "XR", "Performance", "Tools", "Commercial", "Personal", "Academic"]
 };
 
 const research = {

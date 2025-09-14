@@ -270,6 +270,34 @@ body {
     color: var(--primary-dark);
     transform: scale(1.05);
   }
+  
+  // Project type tags with different styling
+  &.project-type {
+    background: rgba(34, 197, 94, 0.9) !important; // Green background
+    color: white !important;
+    
+    &::before {
+      content: "🏢 ";
+      margin-right: 2px;
+    }
+    
+    &[data-type="Personal"]::before {
+      content: "👤 ";
+    }
+    
+    &[data-type="Academic"]::before {
+      content: "🎓 ";
+    }
+    
+    &[data-type="Open Source"]::before {
+      content: "🔓 ";
+    }
+    
+    &.highlighted {
+      background: rgba(34, 197, 94, 1) !important;
+      color: white !important;
+    }
+  }
 }
 
 .project-content {
@@ -602,6 +630,31 @@ body {
     color: white;
     transform: scale(1.05);
   }
+  
+  // Project type tags styling for tools
+  &.project-type {
+    background: rgba(34, 197, 94, 0.1);
+    color: #059669;
+    border: 1px solid #10b981;
+    
+    &::before {
+      content: "🏢 ";
+      margin-right: 2px;
+    }
+    
+    &[data-type="Personal"]::before {
+      content: "👤 ";
+    }
+    
+    &[data-type="Academic"]::before {
+      content: "🎓 ";
+    }
+    
+    &.highlighted {
+      background: #10b981;
+      color: white;
+    }
+  }
 }
 
 .tools-actions {
@@ -656,6 +709,38 @@ body {
   &:focus {
     border-radius: 25px !important;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  }
+  
+  // Project type filter tags
+  &.project-type {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: #10b981;
+    color: #059669;
+    
+    &::before {
+      content: "🏢 ";
+      margin-right: 4px;
+    }
+    
+    &[data-type="Personal"]::before {
+      content: "👤 ";
+    }
+    
+    &[data-type="Academic"]::before {
+      content: "🎓 ";
+    }
+    
+    &:hover {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: #059669;
+      color: #047857;
+    }
+    
+    &.active {
+      background: #10b981;
+      border-color: #059669;
+      color: white;
+    }
   }
   
   &.clear-all {

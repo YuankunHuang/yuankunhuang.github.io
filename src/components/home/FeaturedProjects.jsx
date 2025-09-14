@@ -11,6 +11,11 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
   if (!projects || projects.length === 0) {
     return null;
   }
+  
+  // Helper function to check if a tag is a project type
+  const isProjectTypeTag = (tag) => {
+    return ['Commercial', 'Personal', 'Academic', 'Open Source'].includes(tag);
+  };
 
   // Filter projects based on selected tags, always using original projects
   const filteredProjects = originalProjects.filter(project => {
@@ -158,7 +163,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                 {coreTagFilters.map((tag, index) => (
                   <button
                     key={index}
-                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''}`}
+                    className={`filter-tag ${selectedTags.includes(tag) ? 'active' : ''} ${isProjectTypeTag(tag) ? 'project-type' : ''}`}
+                    data-type={isProjectTypeTag(tag) ? tag : undefined}
                     onClick={() => toggleTag(tag)}
                   >
                     {tag}
@@ -186,7 +192,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                     {project.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex} 
-                        className={`tag ${selectedTags.includes(tag) ? 'highlighted' : ''}`}
+                        className={`tag ${selectedTags.includes(tag) ? 'highlighted' : ''} ${isProjectTypeTag(tag) ? 'project-type' : ''}`}
+                        data-type={isProjectTypeTag(tag) ? tag : undefined}
                       >
                         {tag}
                       </span>
