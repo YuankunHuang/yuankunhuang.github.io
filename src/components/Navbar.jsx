@@ -3,7 +3,7 @@ import { useScrollPosition } from "../hooks/useScrollPosition";
 import useResizeObserver from "../hooks/useResizeObserver";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { mainBody, repos, about, skills } from "../editable-stuff/config.js";
+import { mainBody, about, featuredProjects, research, blog, getInTouch } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
 
 const Navigation = React.forwardRef((props, ref) => {
@@ -43,42 +43,51 @@ const Navigation = React.forwardRef((props, ref) => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggler" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="navbar-nav mr-auto">
-          {/* {
-            <NavLink className="nav-item lead">
-              <Link to={process.env.PUBLIC_URL + "/blog"}>Blog</Link>
-            </NavLink>
-          } */}
-          {repos.show && (
-
+        <Nav className="navbar-nav ms-auto">
+          <NavLink
+            className="nav-link"
+            href={process.env.PUBLIC_URL + "/#home"}
+          >
+            Home
+          </NavLink>
+          {about.show && (
             <NavLink
+              className="nav-link"
+              href={process.env.PUBLIC_URL + "/#about"}
+            >
+              About
+            </NavLink>
+          )}
+          {featuredProjects.length > 0 && (
+            <NavLink
+              className="nav-link"
               href={process.env.PUBLIC_URL + "/#projects"}
             >
               Projects
             </NavLink>
           )}
-          <NavLink
-            className="nav-item lead"
-            href={about.resume}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Resume
-          </NavLink>
-          {about.show && (
+          {research.show && (
             <NavLink
-              className="nav-item lead"
-              href={process.env.PUBLIC_URL + "/#aboutme"}
+              className="nav-link"
+              href={process.env.PUBLIC_URL + "/#research"}
             >
-              About
+              Research
             </NavLink>
           )}
-          {skills.show && (
+          {blog.show && (
             <NavLink
-              className="nav-item lead"
-              href={process.env.PUBLIC_URL + "/#skills"}
+              className="nav-link"
+              href={process.env.PUBLIC_URL + "/#blog"}
             >
-              Skills
+              Blog
+            </NavLink>
+          )}
+          {getInTouch.show && (
+            <NavLink
+              className="nav-link"
+              href={process.env.PUBLIC_URL + "/#contact"}
+            >
+              Contact
             </NavLink>
           )}
         </Nav>

@@ -4,28 +4,30 @@ import {
   navBar,
   mainBody,
   about,
-  repos,
-  leadership,
+  featuredProjects,
+  research,
+  blog,
+  repos,  // Keep for backward compatibility
   skills,
   getInTouch,
   experiences
 } from "./editable-stuff/config.js";
 import MainBody from "./components/home/MainBody";
 import AboutMe from "./components/home/AboutMe";
-import Project from "./components/home/Project";
+import FeaturedProjects from "./components/home/FeaturedProjects";
+import Research from "./components/home/Research";
+import BlogSection from "./components/home/BlogSection";
+import Project from "./components/home/Project";  // Legacy component
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Skills from "./components/home/Skills";
-// import { Blog } from "./components/blog/Blog";
-// import BlogPost from "./components/blog/BlogPost";
 import GetInTouch from "./components/home/GetInTouch.jsx";
-import Leadership from "./components/home/Leadership.jsx";
-
 import Experience from "./components/home/Experience";
 
 const Home = React.forwardRef((props, ref) => {
   return (
     <>
+      {/* Hero Section */}
       <MainBody
         gradient={mainBody.gradientColors}
         title={`${mainBody.firstName} ${mainBody.middleName} ${mainBody.lastName}`}
@@ -33,36 +35,33 @@ const Home = React.forwardRef((props, ref) => {
         icons={mainBody.icons}
         ref={ref}
       />
+      
+      {/* About Me Section */}
       {about.show && (
         <AboutMe
           heading={about.heading}
           message={about.message}
-          link={about.imageLink}
-          imgSize={about.imageSize}
+          stats={about.stats}
+          skills={about.skills}
           resume={about.resume}
         />
       )}
-      {
-        experiences.show && (
-          <Experience experiences={experiences}/>
-        )
-      }
-      {repos.show && (
-        <Project
-          heading={repos.heading}
-          username={repos.gitHubUsername}
-          length={repos.reposLength}
-          specfic={repos.specificRepos}
+      
+      {/* Featured Projects Section */}
+      {featuredProjects && featuredProjects.length > 0 && (
+        <FeaturedProjects projects={featuredProjects} />
+      )}
+      
+      {/* Research Section */}
+      {research.show && (
+        <Research
+          heading={research.heading}
+          subtitle={research.subtitle}
+          projects={research.projects}
         />
       )}
-      {leadership.show && (
-        <Leadership
-          heading={leadership.heading}
-          message={leadership.message}
-          img={leadership.images}
-          imageSize={leadership.imageSize}
-        />
-      )}
+      
+      {/* Skills Section - keeping for detailed skills display */}
       {skills.show && (
         <Skills
           heading={skills.heading}
@@ -71,6 +70,32 @@ const Home = React.forwardRef((props, ref) => {
         />
       )}
       
+      {/* Blog Section */}
+      {blog.show && (
+        <BlogSection
+          heading={blog.heading}
+          subtitle={blog.subtitle}
+          description={blog.description}
+          tags={blog.tags}
+          url={blog.url}
+          icon={blog.icon}
+        />
+      )}
+      
+      {/* Legacy Experience Section - keep if still needed */}
+      {experiences.show && (
+        <Experience experiences={experiences}/>
+      )}
+      
+      {/* Legacy Projects Section - fallback if no featured projects */}
+      {repos.show && !featuredProjects.length && (
+        <Project
+          heading={repos.heading}
+          username={repos.gitHubUsername}
+          length={repos.reposLength}
+          specfic={repos.specificRepos}
+        />
+      )}
     </>
   );
 });
@@ -86,15 +111,18 @@ const App = () => {
       </Routes>
       {/* {false && <Route path="/blog" exact component={Blog} />}
       {false && <Route path="/blog/:id" component={BlogPost} />} */}
-      <Footer>
-        {getInTouch.show && (
-          <GetInTouch
-            heading={getInTouch.heading}
-            message={getInTouch.message}
-            email={getInTouch.email}
-          />
-        )}
-      </Footer>
+      {/* Contact Section - moved outside footer for better layout */}
+      {getInTouch.show && (
+        <GetInTouch
+          heading={getInTouch.heading}
+          subtitle={getInTouch.subtitle}
+          message={getInTouch.message}
+          contacts={getInTouch.contacts}
+        />
+      )}
+      
+      <Footer />
+      
     </BrowserRouter>
   );
 };

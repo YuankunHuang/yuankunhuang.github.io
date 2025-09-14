@@ -1,76 +1,86 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import axios from "axios";
-import { Jumbotron } from "./migration";
-
-const pictureLinkRegex = new RegExp(
-  /[(http(s)?):(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/
-);
-
-const AboutMe = ({ heading, message, link, imgSize, resume }) => {
-  const [profilePicUrl, setProfilePicUrl] = React.useState("");
-  const [showPic, setShowPic] = React.useState(Boolean(link));
-  // https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook
+const AboutMe = ({ heading, message, stats, skills, resume }) => {
+  // Animate stat numbers
   React.useEffect(() => {
-    const handleRequest = async () => {
-      const instaLink = "https://www.instagram.com/";
-      const instaQuery = "/?__a=1";
-      try {
-        const response = await axios.get(instaLink + link + instaQuery);
-        setProfilePicUrl(response.data.graphql.user.profile_pic_url_hd);
-      } catch (error) {
-        setShowPic(false);
-        console.error(error.message);
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+      const finalValue = stat.textContent.trim();
+      
+      // Skip non-numeric values like "IGG"
+      if (!/\d/.test(finalValue)) {
+        return;
       }
-    };
-
-    if (link && !pictureLinkRegex.test(link)) {
-      handleRequest();
-    } else {
-      setProfilePicUrl(link);
-    }
-  }, [link]);
-
-
+      
+      stat.textContent = '0';
+      let current = 0;
+      const numericPart = parseInt(finalValue);
+      const increment = finalValue.includes('+') ? 1 : numericPart > 10 ? Math.ceil(numericPart/20) : 1;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= numericPart) {
+          stat.textContent = finalValue;
+          clearInterval(timer);
+        } else {
+          stat.textContent = current + (finalValue.includes('%') ? '%' : finalValue.includes('+') ? '+' : '');
+        }
+      }, 80);
+    });
+  }, []);
 
   return (
-    <Jumbotron id="aboutme" className="m-0">
-      <div className="container row">
-        <div className="col-5 d-none d-lg-block align-self-center">
-          {showPic && (
-            <img
-              className="border border-secondary rounded-circle"
-              src={profilePicUrl}
-              alt="profilepicture"
-              style={{
-                width: imgSize,
-                height: imgSize,
-                objectFit: "cover",
-                objectPosition: "center"
-              }}
-            />
-          )}
+    <section className="about-section" id="about">
+      <Container>
+        <div className="section-title">
+          <h2>{heading}</h2>
+          <p className="lead">Passionate Unity developer focused on crafting exceptional mobile gaming experiences</p>
         </div>
-        <div className={`col-lg-${showPic ? "7" : "12"}`}>
-          <h2 className="display-4 mb-5 text-center">{heading}</h2>
-          <p className="lead text-center">{message}</p>
-          {resume && (
-            <p className="lead text-center">
-              <a
-                className="btn btn-outline-dark btn-lg"
-                href={resume}
-                target="_blank"
-                rel="noreferrer noopener"
-                role="button"
-                aria-label="Resume/CV"
-              >
-                Resume
-              </a>
+        
+        <Row>
+          <Col lg={8}>
+            <p className="mb-4 lead">
+              {message}
             </p>
-          )}
-        </div>
-      </div>
-    </Jumbotron>
+            <div className="mb-4">
+              {skills && skills.map((skill, index) => (
+                <span key={index} className="skill-highlight">
+                  {skill}
+                </span>
+              ))}
+            </div>
+            {resume && (
+              <div className="mb-4">
+                <a
+                  className="btn-primary-custom"
+                  href={resume}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  role="button"
+                  aria-label="Resume/CV"
+                >
+                  <i className="fas fa-download me-2"></i>
+                  Download Resume
+                </a>
+              </div>
+            )}
+          </Col>
+          <Col lg={4}>
+            <div className="about-stats">
+              {stats && stats.map((stat, index) => (
+                <div key={index} className="stat-item">
+                  <span className="stat-number">{stat.number}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 };
 
