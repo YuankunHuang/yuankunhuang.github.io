@@ -125,6 +125,7 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           companyName: webDemo.companyName || "DefaultCompany",
           productName: webDemo.productName || "WebGL Game",
           productVersion: webDemo.productVersion || "1.0",
+          matchWebGLToCanvasSize: false,
         };
 
         // Progress callback
@@ -139,12 +140,21 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           }
         };
 
+        // Set canvas size before creating Unity instance
+        const canvasWidth = webDemo.width || 960;
+        const canvasHeight = webDemo.height || 600;
+
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        canvas.style.width = canvasWidth + 'px';
+        canvas.style.height = canvasHeight + 'px';
+
         window.createUnityInstance(canvas, config, progressCallback)
           .then((unityInstance) => {
             // Hide loading screen
             if (loading) loading.style.display = 'none';
             console.log('Unity WebGL loaded successfully');
-            
+
             // Store instance for later use
             window[`unityInstance_${projectId}`] = unityInstance;
           })
