@@ -121,7 +121,7 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           dataUrl: `${buildUrl}/${buildName}.data`,
           frameworkUrl: `${buildUrl}/${buildName}.framework.js`,
           codeUrl: `${buildUrl}/${buildName}.wasm`,
-          streamingAssetsUrl: "StreamingAssets",
+          streamingAssetsUrl: `${webDemo.buildPath}/StreamingAssets`,
           companyName: webDemo.companyName || "DefaultCompany",
           productName: webDemo.productName || "WebGL Game",
           productVersion: webDemo.productVersion || "1.0",
@@ -273,8 +273,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                         <i className="fas fa-eye me-2"></i>View Details
                       </button>
                     )}
-                    {project.demoUrl && (
-                      <button 
+                    {(project.demoConfig?.webDemo || project.webDemo) && (
+                      <button
                         onClick={(e) => handlePlayDemo(project, e)}
                         className="btn-outline-custom"
                       >
@@ -447,112 +447,6 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           </Row>
         )}
 
-        {/* Legacy Demo Sections - Keep for backward compatibility */}
-        {filteredProjects.filter(p => p.demoUrl && p.demoUrl.startsWith('#')).map(project => {
-          const demoId = project.demoUrl.substring(1);
-          return (
-            <Row key={`demo-${project.id}`} className="mt-5" id={demoId}>
-              <Col xs={12}>
-                <div className="demo-section">
-                  <div className="d-flex align-items-center mb-3">
-                    <i className={`${getProjectIcon(project.tags[0])} fa-2x text-primary me-3`}></i>
-                    <div>
-                      <h3 className="mb-1">{project.title} - Live Demo</h3>
-                      <p className="text-muted mb-0">
-                        {project.demoDescription || "Experience the project features in your browser"}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* Web Demo Embed - Support for Unity WebGL, iframe, etc. */}
-                  {project.webDemo ? (
-                    <div className="web-demo-container">
-                      {project.webDemo.type === 'unity' && (
-                        <div className="unity-webgl-container">
-                          <canvas id={`unityCanvas-${project.id}`} 
-                                  width={project.webDemo.width || 960} 
-                                  height={project.webDemo.height || 600}>
-                          </canvas>
-                          <div className="demo-loading" id={`loading-${project.id}`}>
-                            <div className="loading-bar">
-                              <div className="loading-progress"></div>
-                            </div>
-                            <p>Loading {project.title}...</p>
-                          </div>
-                        </div>
-                      )}
-                      {project.webDemo.type === 'iframe' && (
-                        <iframe 
-                          src={project.webDemo.url}
-                          width="100%" 
-                          height={project.webDemo.height || 600}
-                          frameBorder="0"
-                          allowFullScreen
-                          title={`${project.title} Demo`}
-                        />
-                      )}
-                      {project.webDemo.type === 'video' && (
-                        <video 
-                          width="100%" 
-                          height={project.webDemo.height || 400}
-                          controls 
-                          poster={project.webDemo.poster}
-                        >
-                          <source src={project.webDemo.url} type="video/mp4" />
-                          Your browser does not support video playback.
-                        </video>
-                      )}
-                    </div>
-                  ) : (
-                    // Placeholder demo section
-                    <div className="demo-placeholder">
-                      <div>
-                        <i className={`${getProjectIcon(project.tags[0])} fa-3x mb-3`}></i>
-                        <p>{project.title} Demo</p>
-                        <small>{project.demoTech || "Unity WebGL Build • Optimized Performance"}</small>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="demo-controls">
-                    {project.webDemo && (
-                      <>
-                        <button className="btn-primary-custom" onClick={() => startDemo(project.id)}>
-                          <i className="fas fa-play me-2"></i>
-                          {project.webDemo.startText || "Start Demo"}
-                        </button>
-                        <button className="btn-outline-custom" onClick={() => toggleFullscreen(project.id)}>
-                          <i className="fas fa-expand me-2"></i>Fullscreen
-                        </button>
-                      </>
-                    )}
-                    {project.githubUrl && (
-                      <a 
-                        href={project.githubUrl} 
-                        target="_blank" 
-                        rel="noreferrer noopener" 
-                        className="btn-outline-custom"
-                      >
-                        <i className="fab fa-github me-2"></i>View Source
-                      </a>
-                    )}
-                    <button className="btn-outline-custom">
-                      <i className="fas fa-info me-2"></i>Details
-                    </button>
-                  </div>
-                  
-                  {project.demoFeatures && (
-                    <div className="mt-3">
-                      <small className="text-muted">
-                        <strong>Demo Features:</strong> {project.demoFeatures.join(", ")}
-                      </small>
-                    </div>
-                  )}
-                </div>
-              </Col>
-            </Row>
-          );
-        })}
       </Container>
     </section>
   );

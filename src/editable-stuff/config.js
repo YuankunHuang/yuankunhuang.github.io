@@ -135,7 +135,6 @@ const featuredProjects = [
     ],
     
     // Demo and links (演示和链接)
-    demoUrl: "#mythicDemo", // "#demoId" for embedded demo, "https://..." for external
     // githubUrl: "https://github.com/yourusername/repo", // Uncomment if public
     
     // Demo configuration (演示配置) - All demo content is configurable
@@ -180,7 +179,6 @@ const featuredProjects = [
       "Automated Build Pipeline"
     ],
     githubUrl: "https://github.com/YuankunHuang/SynthMind",
-    demoUrl: "#synthMindDemo", // 添加这行来启用试玩按钮
     detailsModal: "synthMindModal",
     status: "active",
 

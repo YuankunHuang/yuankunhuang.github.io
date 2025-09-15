@@ -67,6 +67,15 @@
         productName: "SynthMind",
         productVersion: "1.0.0",
         showBanner: unityShowBanner,
+        // Add error handling and debug logs
+        webglContextAttributes: {
+          preserveDrawingBuffer: false,
+          premultipliedAlpha: false,
+          alpha: false,
+          antialias: true,
+          stencil: true,
+          depth: true
+        }
       };
 
       // By default, Unity keeps WebGL canvas render target size matched with
@@ -103,17 +112,27 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
+        console.log("Unity loader script loaded successfully");
+        console.log("Config:", config);
         createUnityInstance(canvas, config, (progress) => {
+          console.log("Loading progress:", progress);
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                console.log("Unity instance created successfully");
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
               }).catch((message) => {
-                alert(message);
+                console.error("Unity instance creation failed:", message);
+                unityShowBanner("Failed to load Unity content: " + message, 'error');
               });
             };
+
+      script.onerror = () => {
+        console.error("Failed to load Unity loader script from:", loaderUrl);
+        unityShowBanner("Failed to load Unity loader script", 'error');
+      };
 
       document.body.appendChild(script);
 

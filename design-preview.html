@@ -1633,16 +1633,6 @@
                                 <li><strong>Automated Reports:</strong> Generate comprehensive performance reports for stakeholders</li>
                             </ul>
 
-                            <div class="demo-section">
-                                <h6>Interactive Code Demo</h6>
-                                <div class="demo-placeholder">
-                                    <div>
-                                        <i class="fas fa-code fa-3x mb-3"></i>
-                                        <p>Code editor with syntax highlighting would be here</p>
-                                        <small>Performance analysis algorithm preview</small>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <h6>Technical Stack</h6>
@@ -2124,7 +2114,35 @@
 
         function closeLiveDemo() {
             const liveDemo = document.getElementById('liveDemo');
+            const demoContent = document.getElementById('demoContent');
+
+            // Stop any running Unity instances or demos
+            if (window.unityInstance) {
+                try {
+                    window.unityInstance.Quit();
+                    window.unityInstance = null;
+                } catch (e) {
+                    console.log('Unity instance cleanup:', e);
+                }
+            }
+
+            // Clear demo content
+            demoContent.innerHTML = `
+                <div>
+                    <i class="fas fa-cube fa-3x mb-3"></i>
+                    <p id="demoPlaceholderTitle">Project Demo</p>
+                    <small id="demoPlaceholderTech">Unity 2021.3 LTS • Optimized Performance</small>
+                </div>
+            `;
+
+            // Hide the demo section
             liveDemo.style.display = 'none';
+
+            // Scroll back to projects section
+            document.getElementById('featured').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
     </script>
 
