@@ -77,11 +77,6 @@ const Tools = ({ heading, subtitle, projects, coreTagFilters = [] }) => {
     setSelectedTags([]);
   };
 
-  const clearAllFilters = () => {
-    setSelectedTags([]);
-    setSelectedProjectType('');
-  };
-
   return (
     <section className="tools-section" id="tools">
       <Container>

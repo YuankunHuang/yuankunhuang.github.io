@@ -60,11 +60,6 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     setSelectedTags([]);
   };
 
-  const clearAllFilters = () => {
-    setSelectedTags([]);
-    setSelectedProjectType('');
-  };
-
   // Handle demo actions
   const handlePlayDemo = (project, e) => {
     e.preventDefault();
@@ -75,10 +70,16 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
       if (demoSection) {
         demoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+      // Auto-start demo loading if webDemo is configured
+      if (project.demoConfig?.webDemo || project.webDemo) {
+        startDemo(project.id);
+      }
     }, 100);
   };
 
-  const closeLiveDemo = () => {
+  const closeLiveDemo = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setActiveDemoProject(null);
   };
 
@@ -88,7 +89,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     
     // Find the project data
     const project = originalProjects.find(p => p.id === projectId);
-    if (!project || !project.webDemo || project.webDemo.type !== 'unity') {
+    const webDemo = project?.demoConfig?.webDemo || project?.webDemo;
+    if (!project || !webDemo || webDemo.type !== 'unity') {
       console.error('Unity WebGL demo not configured for project:', projectId);
       return;
     }
@@ -108,9 +110,9 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
     if (loading) loading.style.display = 'flex';
     
     // Load Unity WebGL build
-    const buildUrl = `${project.webDemo.buildPath}/Build`;
-    const buildName = project.webDemo.buildName;
-    
+    const buildUrl = `${webDemo.buildPath}/Build`;
+    const buildName = webDemo.buildName;
+
     const script = document.createElement("script");
     script.src = `${buildUrl}/${buildName}.loader.js`;
     script.onload = () => {
@@ -120,9 +122,9 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
           frameworkUrl: `${buildUrl}/${buildName}.framework.js`,
           codeUrl: `${buildUrl}/${buildName}.wasm`,
           streamingAssetsUrl: "StreamingAssets",
-          companyName: project.webDemo.companyName || "DefaultCompany",
-          productName: project.webDemo.productName || "WebGL Game",
-          productVersion: project.webDemo.productVersion || "1.0",
+          companyName: webDemo.companyName || "DefaultCompany",
+          productName: webDemo.productName || "WebGL Game",
+          productVersion: webDemo.productVersion || "1.0",
         };
 
         // Progress callback
@@ -334,8 +336,8 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                       </p>
                     </div>
                   </div>
-                  <button 
-                    onClick={closeLiveDemo}
+                  <button
+                    onClick={(e) => closeLiveDemo(e)}
                     className="btn btn-outline-secondary btn-sm"
                     title="Close Demo"
                   >
@@ -344,51 +346,60 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                 </div>
                 
                 {/* Web Demo Content */}
-                {activeDemoProject.webDemo ? (
+                {(activeDemoProject.demoConfig?.webDemo || activeDemoProject.webDemo) ? (
                   <div className="web-demo-container">
-                    {activeDemoProject.webDemo.type === 'unity' && (
-                      <div className="unity-webgl-container">
-                        <canvas 
-                          id={`unityCanvas-${activeDemoProject.id}`} 
-                          style={{
-                            width: activeDemoProject.webDemo.width || 960,
-                            height: activeDemoProject.webDemo.height || 600,
-                            background: '#222C36'
-                          }}
-                        >
-                        </canvas>
-                        <div className="demo-loading" id={`loading-${activeDemoProject.id}`}>
-                          <div className="loading-bar">
-                            <div className="loading-progress" id={`progress-${activeDemoProject.id}`}></div>
+                    {(() => {
+                      const webDemo = activeDemoProject.demoConfig?.webDemo || activeDemoProject.webDemo;
+                      return webDemo?.type === 'unity' && (
+                        <div className="unity-webgl-container">
+                          <canvas
+                            id={`unityCanvas-${activeDemoProject.id}`}
+                            style={{
+                              width: webDemo.width || 960,
+                              height: webDemo.height || 600,
+                              background: '#222C36'
+                            }}
+                          >
+                          </canvas>
+                          <div className="demo-loading" id={`loading-${activeDemoProject.id}`}>
+                            <div className="loading-bar">
+                              <div className="loading-progress" id={`progress-${activeDemoProject.id}`}></div>
+                            </div>
+                            <p id={`loadingText-${activeDemoProject.id}`}>
+                              {webDemo.loadingText || `Loading ${activeDemoProject.title}...`}
+                            </p>
+                            <div className="loading-percentage" id={`percentage-${activeDemoProject.id}`}>0%</div>
                           </div>
-                          <p id={`loadingText-${activeDemoProject.id}`}>
-                            {activeDemoProject.webDemo.loadingText || `Loading ${activeDemoProject.title}...`}
-                          </p>
-                          <div className="loading-percentage" id={`percentage-${activeDemoProject.id}`}>0%</div>
                         </div>
-                      </div>
-                    )}
-                    {activeDemoProject.webDemo.type === 'iframe' && (
-                      <iframe 
-                        src={activeDemoProject.webDemo.url}
-                        width="100%" 
-                        height={activeDemoProject.webDemo.height || 600}
-                        frameBorder="0"
-                        allowFullScreen
-                        title={`${activeDemoProject.title} Demo`}
-                      />
-                    )}
-                    {activeDemoProject.webDemo.type === 'video' && (
-                      <video 
-                        width="100%" 
-                        height={activeDemoProject.webDemo.height || 400}
-                        controls 
-                        poster={activeDemoProject.webDemo.poster}
-                      >
-                        <source src={activeDemoProject.webDemo.url} type="video/mp4" />
-                        Your browser does not support video playback.
-                      </video>
-                    )}
+                      );
+                    })()}
+                    {(() => {
+                      const webDemo = activeDemoProject.demoConfig?.webDemo || activeDemoProject.webDemo;
+                      return webDemo?.type === 'iframe' && (
+                        <iframe
+                          src={webDemo.url}
+                          width="100%"
+                          height={webDemo.height || 600}
+                          frameBorder="0"
+                          allowFullScreen
+                          title={`${activeDemoProject.title} Demo`}
+                        />
+                      );
+                    })()}
+                    {(() => {
+                      const webDemo = activeDemoProject.demoConfig?.webDemo || activeDemoProject.webDemo;
+                      return webDemo?.type === 'video' && (
+                        <video
+                          width="100%"
+                          height={webDemo.height || 400}
+                          controls
+                          poster={webDemo.poster}
+                        >
+                          <source src={webDemo.url} type="video/mp4" />
+                          Your browser does not support video playback.
+                        </video>
+                      );
+                    })()}
                   </div>
                 ) : (
                   // Placeholder demo section
@@ -402,22 +413,16 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
                 )}
                 
                 <div className="demo-controls">
-                  {activeDemoProject.webDemo && (
-                    <>
-                      <button className="btn-primary-custom" onClick={() => startDemo(activeDemoProject.id)}>
-                        <i className="fas fa-play me-2"></i>
-                        {activeDemoProject.demoConfig?.startText || activeDemoProject.webDemo.startText || "Start Demo"}
-                      </button>
-                      <button className="btn-outline-custom" onClick={() => toggleFullscreen(activeDemoProject.id)}>
-                        <i className="fas fa-expand me-2"></i>Fullscreen
-                      </button>
-                    </>
+                  {(activeDemoProject.demoConfig?.webDemo || activeDemoProject.webDemo) && (
+                    <button className="btn-outline-custom" onClick={() => toggleFullscreen(activeDemoProject.id)}>
+                      <i className="fas fa-expand me-2"></i>Fullscreen
+                    </button>
                   )}
                   {activeDemoProject.githubUrl && (
-                    <a 
-                      href={activeDemoProject.githubUrl} 
-                      target="_blank" 
-                      rel="noreferrer noopener" 
+                    <a
+                      href={activeDemoProject.githubUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
                       className="btn-outline-custom"
                     >
                       <i className="fab fa-github me-2"></i>View Source

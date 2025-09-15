@@ -175,14 +175,15 @@ const featuredProjects = [
     tags: ["Unity", "AI", "Shaders", "C#", "Personal"],
     highlights: [
       "Custom AI Integration Framework",
-      "Advanced Shader Programming", 
+      "Advanced Shader Programming",
       "Game Data Configuration Tool",
       "Automated Build Pipeline"
     ],
     githubUrl: "https://github.com/YuankunHuang/SynthMind",
+    demoUrl: "#synthMindDemo", // 添加这行来启用试玩按钮
     detailsModal: "synthMindModal",
     status: "active",
-    
+
     // Demo configuration for SynthMind
     demoConfig: {
       icon: "fas fa-brain",
@@ -191,7 +192,18 @@ const featuredProjects = [
       placeholderTitle: "SynthMind AI Framework",
       tech: "Unity • C# • Custom Shaders • AI Integration • Python Tools",
       features: ["AI behavior system", "Real-time shader effects", "Data configuration", "Build automation"],
-      startText: "Launch Framework"
+      startText: "Launch Framework",
+      webDemo: { // WebGL演示配置
+        type: "unity", // 类型：unity WebGL
+        buildPath: "/webgl-demos/SynthMind", // WebGL构建文件路径
+        buildName: "SynthMind", // 构建文件名（不含扩展名）
+        width: 960, // 宽度 - 改小一点便于调试
+        height: 600, // 高度 - 改小一点便于调试
+        loadingText: "Loading SynthMind...", // 加载提示文字
+        companyName: "YuankunHuang", // 公司名称 - 与 index.html 保持一致
+        productName: "SynthMind", // 产品名称
+        productVersion: "1.0.0" // 版本号 - 与 index.html 保持一致
+      }
     }
   },
   {
@@ -199,7 +211,7 @@ const featuredProjects = [
     title: "HIVE Rehab - Gesture Training",
     description: "Leap Motion neuro-rehabilitation game with gesture-driven training loops and clinical data logging for stroke recovery research.",
     image: "/api/placeholder/400/300", 
-    tags: ["Unity", "Healthcare", "Leap Motion", "Academic"],
+    tags: ["Unity", "C#", "Healthcare", "Leap Motion", "Academic"],
     highlights: [
       "< 20ms Interaction Latency",
       "Clinical Data Export",
