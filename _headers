@@ -1,0 +1,16 @@
+# Headers for Unity WebGL builds
+/webgl-demos/*/Build/*.data.br
+  Content-Type: application/octet-stream
+  Content-Encoding: br
+
+/webgl-demos/*/Build/*.wasm.br
+  Content-Type: application/wasm
+  Content-Encoding: br
+
+/webgl-demos/*/Build/*.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br
+
+/webgl-demos/*/Build/*.framework.js.br
+  Content-Type: application/javascript
+  Content-Encoding: br

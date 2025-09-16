@@ -1,0 +1,140 @@
+{
+  "AccountTest": {
+    "FieldCount": 8,
+    "RowCount": 2,
+    "Fields": [
+      {
+        "Name": "id",
+        "Type": "Int"
+      },
+      {
+        "Name": "uuid",
+        "Type": "String"
+      },
+      {
+        "Name": "isAI",
+        "Type": "Bool"
+      },
+      {
+        "Name": "username",
+        "Type": "String"
+      },
+      {
+        "Name": "password",
+        "Type": "String"
+      },
+      {
+        "Name": "nickname",
+        "Type": "String"
+      },
+      {
+        "Name": "email",
+        "Type": "String"
+      },
+      {
+        "Name": "avatar",
+        "Type": "Int"
+      }
+    ]
+  },
+  "Audio": {
+    "FieldCount": 7,
+    "RowCount": 2,
+    "Fields": [
+      {
+        "Name": "id",
+        "Type": "Int"
+      },
+      {
+        "Name": "audioId",
+        "Type": "Enum"
+      },
+      {
+        "Name": "group",
+        "Type": "Enum"
+      },
+      {
+        "Name": "assetPath",
+        "Type": "String"
+      },
+      {
+        "Name": "defaultVolume",
+        "Type": "Int"
+      },
+      {
+        "Name": "loop",
+        "Type": "Bool"
+      },
+      {
+        "Name": "priority",
+        "Type": "Int"
+      }
+    ]
+  },
+  "Avatar": {
+    "FieldCount": 2,
+    "RowCount": 48,
+    "Fields": [
+      {
+        "Name": "id",
+        "Type": "Int"
+      },
+      {
+        "Name": "asset",
+        "Type": "String"
+      }
+    ]
+  },
+  "Language": {
+    "FieldCount": 3,
+    "RowCount": 4,
+    "Fields": [
+      {
+        "Name": "id",
+        "Type": "Int"
+      },
+      {
+        "Name": "langCode",
+        "Type": "String"
+      },
+      {
+        "Name": "icon",
+        "Type": "String"
+      }
+    ]
+  },
+  "Sample": {
+    "FieldCount": 7,
+    "RowCount": 20,
+    "Fields": [
+      {
+        "Name": "ID",
+        "Type": "Int"
+      },
+      {
+        "Name": "Name",
+        "Type": "String"
+      },
+      {
+        "Name": "Type",
+        "Type": "Enum"
+      },
+      {
+        "Name": "Level",
+        "Type": "Int"
+      },
+      {
+        "Name": "Cost",
+        "Type": "Float"
+      },
+      {
+        "Name": "openTime",
+        "Type": "DateTime"
+      },
+      {
+        "Name": "closeTime",
+        "Type": "DateTime"
+      }
+    ]
+  }
+}
