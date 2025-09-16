@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | SynthMind</title>
+    <title>SynthMind</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -23,8 +23,81 @@
         <div id="unity-build-title">SynthMind</div>
       </div>
     </div>
-    <script>
 
+    <!-- Firebase SDK - Using stable v9 -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"
+            onload="console.log('[Firebase] firebase-app-compat.js loaded successfully')"
+            onerror="console.error('[Firebase] Failed to load firebase-app-compat.js')"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"
+            onload="console.log('[Firebase] firebase-firestore-compat.js loaded successfully')"
+            onerror="console.error('[Firebase] Failed to load firebase-firestore-compat.js')"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"
+            onload="console.log('[Firebase] firebase-analytics-compat.js loaded successfully')"
+            onerror="console.error('[Firebase] Failed to load firebase-analytics-compat.js')"></script>
+
+    <!-- Firebase Configuration -->
+    <script>
+      // Firebase configuration - Real configuration for SynthMind project
+      const firebaseConfig = {
+        apiKey: "AIzaSyAr0k5z3nRxw6_Gn-yeYBlafm76cdQAPME",
+        authDomain: "synthmind-yuankunhuang.firebaseapp.com",
+        projectId: "synthmind-yuankunhuang",
+        storageBucket: "synthmind-yuankunhuang.firebasestorage.app",
+        messagingSenderId: "976701209071",
+        appId: "1:976701209071:web:d4309fbcf343275864de1a",
+        measurementId: "G-JQVCFKPFYE"
+      };
+
+      try {
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Initialize Analytics (optional) - ignore errors if already exists
+        if (firebaseConfig.measurementId) {
+          try {
+            firebase.analytics();
+            console.log("[Firebase] Analytics initialized successfully");
+          } catch (analyticsError) {
+            console.warn("[Firebase] Analytics initialization failed (this is normal if already exists):", analyticsError.message);
+          }
+        }
+
+        console.log("[Firebase] Firebase initialized successfully for WebGL");
+        console.log("[Firebase] Project ID:", firebaseConfig.projectId);
+      } catch (error) {
+        console.error("[Firebase] Firebase initialization failed:", error);
+        alert("Firebase configuration error. Please check the console for details.");
+      }
+
+      // Debug function to check Firebase availability
+      window.checkFirebaseStatus = function() {
+        console.log("[Firebase Debug] typeof firebase:", typeof firebase);
+        console.log("[Firebase Debug] firebase.apps.length:", firebase ? firebase.apps.length : "Firebase is undefined");
+        console.log("[Firebase Debug] firebase.firestore:", firebase ? typeof firebase.firestore : "Firebase is undefined");
+        return typeof firebase !== 'undefined';
+      };
+
+      // Call this function after some delay to see if Firebase loads eventually
+      setTimeout(function() {
+        console.log("[Firebase Debug] Status after 5 seconds:");
+        window.checkFirebaseStatus();
+      }, 5000);
+
+      // Immediate check to see if Firebase scripts are in DOM
+      setTimeout(function() {
+        var scripts = document.getElementsByTagName('script');
+        var firebaseScripts = [];
+        for (var i = 0; i < scripts.length; i++) {
+          if (scripts[i].src && scripts[i].src.includes('firebase')) {
+            firebaseScripts.push(scripts[i].src);
+          }
+        }
+        console.log("[Firebase Debug] Immediate script check found:", firebaseScripts.length, "Firebase scripts");
+        console.log("[Firebase Debug] Firebase script URLs:", firebaseScripts);
+      }, 1000);
+    </script>
+
+    <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -33,8 +106,8 @@
       var warningBanner = document.querySelector("#unity-warning");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
+      // a permanent error message on top of the canvas if type=="error".
+      // If type=="warning", a yellow highlight color is used.
       // Modify or remove this function to customize the visually presented
       // way that non-critical warnings and error messages are presented to the
       // user.
@@ -69,7 +142,7 @@
         showBanner: unityShowBanner,
       };
 
-      // By default, Unity keeps WebGL canvas render target size matched with
+      // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
       // Set this to false if you want to decouple this synchronization from
       // happening inside the engine, and you would instead like to size up
@@ -84,13 +157,15 @@
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
+        // To lower canvas resolution on mobile devices to gain performance,
+        // uncomment the following line:
         // config.devicePixelRatio = 1;
 
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
 
+        unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
@@ -106,17 +181,18 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-              }).catch((message) => {
-                alert(message);
-              });
-            };
+          // Store the Unity instance globally for Firebase callbacks
+          window.unityInstance = unityInstance;
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
 
       document.body.appendChild(script);
-
     </script>
   </body>
 </html>

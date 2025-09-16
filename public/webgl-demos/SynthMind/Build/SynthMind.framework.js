@@ -1994,13 +1994,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  5990096: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 5990157: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 5990221: function() {return Module.webglContextAttributes.powerPreference;},  
- 5990279: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 5990334: function($0) {performance.now = function() { return $0; };},  
- 5990382: function($0) {performance.now = function() { return $0; };},  
- 5990430: function() {performance.now = Module['emscripten_get_now_backup'];}
+  5990000: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 5990061: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 5990125: function() {return Module.webglContextAttributes.powerPreference;},  
+ 5990183: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 5990238: function($0) {performance.now = function() { return $0; };},  
+ 5990286: function($0) {performance.now = function() { return $0; };},  
+ 5990334: function() {performance.now = Module['emscripten_get_now_backup'];}
 };
 
 
@@ -2400,11 +2400,38 @@ var ASM_CONSTS = {
     }
 
   function _InitFirebaseWeb() {
-          console.log("[FirebaseWebGL] Initializing Firebase for WebGL...");
+          console.log("[FirebaseWebGL] Checking Firebase availability for WebGL...");
+  
+          // Debug: Check what's available in the global scope
+          console.log("[FirebaseWebGL] Global firebase object:", typeof firebase);
+          console.log("[FirebaseWebGL] Window firebase:", typeof window.firebase);
+  
+          // List all loaded scripts for debugging
+          var scripts = document.getElementsByTagName('script');
+          var firebaseScripts = [];
+          var allScripts = [];
+          for (var i = 0; i < scripts.length; i++) {
+              allScripts.push(scripts[i].src || 'inline script');
+              if (scripts[i].src && scripts[i].src.includes('firebase')) {
+                  firebaseScripts.push({
+                      src: scripts[i].src,
+                      loaded: scripts[i].readyState || 'unknown',
+                      error: scripts[i].onerror ? 'has error handler' : 'no error handler'
+                  });
+              }
+          }
+          console.log("[FirebaseWebGL] All scripts:", allScripts);
+          console.log("[FirebaseWebGL] Firebase scripts found:", firebaseScripts);
+  
+          // Check for script loading errors
+          if (firebaseScripts.length > 0) {
+              console.log("[FirebaseWebGL] Firebase scripts are present in DOM but firebase object is undefined");
+              console.log("[FirebaseWebGL] This suggests scripts failed to load or execute");
+          }
   
           // Check if Firebase is available
           if (typeof firebase === 'undefined') {
-              console.error("[FirebaseWebGL] Firebase SDK is not loaded. Please include Firebase SDK in your HTML.");
+              console.log("[FirebaseWebGL] Firebase SDK not yet loaded - this is normal on first call");
               return false;
           }
   
@@ -17456,6 +17483,9 @@ var dynCall_fiiii = Module["dynCall_fiiii"] = createExportWrapper("dynCall_fiiii
 var dynCall_iiiiiiifii = Module["dynCall_iiiiiiifii"] = createExportWrapper("dynCall_iiiiiiifii");
 
 /** @type {function(...*):?} */
+var dynCall_vffi = Module["dynCall_vffi"] = createExportWrapper("dynCall_vffi");
+
+/** @type {function(...*):?} */
 var dynCall_vifii = Module["dynCall_vifii"] = createExportWrapper("dynCall_vifii");
 
 /** @type {function(...*):?} */
@@ -17561,9 +17591,6 @@ var dynCall_vjiiiii = Module["dynCall_vjiiiii"] = createExportWrapper("dynCall_v
 var dynCall_jiiiii = Module["dynCall_jiiiii"] = createExportWrapper("dynCall_jiiiii");
 
 /** @type {function(...*):?} */
-var dynCall_vffi = Module["dynCall_vffi"] = createExportWrapper("dynCall_vffi");
-
-/** @type {function(...*):?} */
 var dynCall_viiiiji = Module["dynCall_viiiiji"] = createExportWrapper("dynCall_viiiiji");
 
 /** @type {function(...*):?} */
@@ -17583,6 +17610,9 @@ var dynCall_viiiiifiifi = Module["dynCall_viiiiifiifi"] = createExportWrapper("d
 
 /** @type {function(...*):?} */
 var dynCall_viiiiijii = Module["dynCall_viiiiijii"] = createExportWrapper("dynCall_viiiiijii");
+
+/** @type {function(...*):?} */
+var dynCall_ifii = Module["dynCall_ifii"] = createExportWrapper("dynCall_ifii");
 
 /** @type {function(...*):?} */
 var dynCall_iiffii = Module["dynCall_iiffii"] = createExportWrapper("dynCall_iiffii");
@@ -18246,9 +18276,6 @@ var dynCall_iiiidi = Module["dynCall_iiiidi"] = createExportWrapper("dynCall_iii
 
 /** @type {function(...*):?} */
 var dynCall_viidii = Module["dynCall_viidii"] = createExportWrapper("dynCall_viidii");
-
-/** @type {function(...*):?} */
-var dynCall_ifii = Module["dynCall_ifii"] = createExportWrapper("dynCall_ifii");
 
 /** @type {function(...*):?} */
 var dynCall_iiiiiiiifii = Module["dynCall_iiiiiiiifii"] = createExportWrapper("dynCall_iiiiiiiifii");
@@ -19427,6 +19454,17 @@ function invoke_iiiiiiifii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9) {
   }
 }
 
+function invoke_vffi(index,a1,a2,a3) {
+  var sp = stackSave();
+  try {
+    dynCall_vffi(index,a1,a2,a3);
+  } catch(e) {
+    stackRestore(sp);
+    if (e !== e+0) throw e;
+    _setThrew(1, 0);
+  }
+}
+
 function invoke_vifii(index,a1,a2,a3,a4) {
   var sp = stackSave();
   try {
@@ -19486,17 +19524,6 @@ function invoke_iiiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10) {
   var sp = stackSave();
   try {
     return dynCall_iiiiiiiiiii(index,a1,a2,a3,a4,a5,a6,a7,a8,a9,a10);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_vffi(index,a1,a2,a3) {
-  var sp = stackSave();
-  try {
-    dynCall_vffi(index,a1,a2,a3);
   } catch(e) {
     stackRestore(sp);
     if (e !== e+0) throw e;
