@@ -80,13 +80,49 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
   const closeLiveDemo = (e) => {
     e?.preventDefault();
     e?.stopPropagation();
+
+    // Stop Unity instance if it exists
+    if (activeDemoProject) {
+      const unityInstance = window[`unityInstance_${activeDemoProject.id}`];
+      if (unityInstance && typeof unityInstance.Quit === 'function') {
+        try {
+          unityInstance.Quit(() => {
+            console.log(`Unity instance for ${activeDemoProject.id} has been properly quit`);
+          });
+        } catch (error) {
+          console.error('Error quitting Unity instance:', error);
+        }
+        // Clear the instance reference
+        delete window[`unityInstance_${activeDemoProject.id}`];
+      }
+
+      // Also remove any Unity loader script that was added
+      const existingScripts = document.querySelectorAll('script[src*="loader.js"]');
+      existingScripts.forEach(script => {
+        if (script.src.includes(activeDemoProject.id) || script.src.includes('SynthMind')) {
+          script.remove();
+        }
+      });
+    }
+
     setActiveDemoProject(null);
   };
 
   // Demo control functions
   const startDemo = (projectId) => {
     console.log(`Starting demo for project ${projectId}`);
-    
+
+    // Clean up any existing Unity instance for this project
+    const existingInstance = window[`unityInstance_${projectId}`];
+    if (existingInstance && typeof existingInstance.Quit === 'function') {
+      try {
+        existingInstance.Quit();
+        delete window[`unityInstance_${projectId}`];
+      } catch (error) {
+        console.error('Error cleaning up existing Unity instance:', error);
+      }
+    }
+
     // Find the project data
     const project = originalProjects.find(p => p.id === projectId);
     const webDemo = project?.demoConfig?.webDemo || project?.webDemo;
