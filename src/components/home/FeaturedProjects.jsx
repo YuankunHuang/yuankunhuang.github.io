@@ -210,17 +210,127 @@ const FeaturedProjects = ({ projects, coreTagFilters = [] }) => {
   };
 
   const toggleFullscreen = (projectId) => {
-    const container = document.getElementById(`unityCanvas-${projectId}`)?.parentElement;
-    if (container) {
+    const canvas = document.getElementById(`unityCanvas-${projectId}`);
+    const container = canvas?.parentElement;
+
+    if (container && canvas) {
       if (!document.fullscreenElement) {
-        container.requestFullscreen?.() || 
-        container.webkitRequestFullscreen?.() || 
-        container.mozRequestFullScreen?.();
+        // Store original canvas size
+        canvas._originalWidth = canvas.width;
+        canvas._originalHeight = canvas.height;
+        canvas._originalStyleWidth = canvas.style.width;
+        canvas._originalStyleHeight = canvas.style.height;
+
+        // Request fullscreen
+        const fullscreenPromise = container.requestFullscreen?.() ||
+          container.webkitRequestFullscreen?.() ||
+          container.mozRequestFullScreen?.();
+
+        if (fullscreenPromise && fullscreenPromise.then) {
+          fullscreenPromise.then(() => {
+            // Resize canvas to fullscreen
+            resizeCanvasForFullscreen(canvas, container);
+          });
+        } else {
+          // Fallback for browsers that don't return a promise
+          setTimeout(() => {
+            resizeCanvasForFullscreen(canvas, container);
+          }, 100);
+        }
+
+        // Listen for fullscreen change events
+        const handleFullscreenChange = () => {
+          if (document.fullscreenElement === container) {
+            resizeCanvasForFullscreen(canvas, container);
+          } else {
+            // Restore original size when exiting fullscreen
+            restoreCanvasSize(canvas);
+            // Remove event listeners
+            document.removeEventListener('fullscreenchange', handleFullscreenChange);
+            document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+            document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+          }
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+
       } else {
-        document.exitFullscreen?.() || 
-        document.webkitExitFullscreen?.() || 
+        document.exitFullscreen?.() ||
+        document.webkitExitFullscreen?.() ||
         document.mozCancelFullScreen?.();
       }
+    }
+  };
+
+  const resizeCanvasForFullscreen = (canvas, container) => {
+    if (!canvas || !container) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const originalAspectRatio = canvas._originalWidth / canvas._originalHeight;
+    const screenAspectRatio = containerRect.width / containerRect.height;
+
+    let newWidth, newHeight;
+
+    // Maintain aspect ratio while fitting to screen
+    if (screenAspectRatio > originalAspectRatio) {
+      // Screen is wider than game - fit to height
+      newHeight = containerRect.height;
+      newWidth = newHeight * originalAspectRatio;
+    } else {
+      // Screen is taller than game - fit to width
+      newWidth = containerRect.width;
+      newHeight = newWidth / originalAspectRatio;
+    }
+
+    // Update canvas size
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+    canvas.style.width = newWidth + 'px';
+    canvas.style.height = newHeight + 'px';
+
+    // Center the canvas in the container
+    canvas.style.position = 'absolute';
+    canvas.style.left = '50%';
+    canvas.style.top = '50%';
+    canvas.style.transform = 'translate(-50%, -50%)';
+
+    // Ensure container has proper styling for centering
+    container.style.position = 'relative';
+    container.style.display = 'flex';
+    container.style.alignItems = 'center';
+    container.style.justifyContent = 'center';
+    container.style.width = '100%';
+    container.style.height = '100vh';
+    container.style.backgroundColor = '#000';
+  };
+
+  const restoreCanvasSize = (canvas) => {
+    if (!canvas) return;
+
+    // Restore original size
+    canvas.width = canvas._originalWidth || 960;
+    canvas.height = canvas._originalHeight || 600;
+    canvas.style.width = canvas._originalStyleWidth || '960px';
+    canvas.style.height = canvas._originalStyleHeight || '600px';
+
+    // Reset positioning
+    canvas.style.position = '';
+    canvas.style.left = '';
+    canvas.style.top = '';
+    canvas.style.transform = '';
+
+    // Reset container styling
+    const container = canvas.parentElement;
+    if (container) {
+      container.style.position = '';
+      container.style.display = '';
+      container.style.alignItems = '';
+      container.style.justifyContent = '';
+      container.style.width = '';
+      container.style.height = '';
+      container.style.backgroundColor = '';
     }
   };
 
